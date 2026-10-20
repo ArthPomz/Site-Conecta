@@ -111,6 +111,8 @@ img { max-width: 100%; display: block; }
 /* Topo das páginas internas */
 .topo { padding: 80px 0 48px; background: var(--cor-fundo-alt); }
 .topo .titulo { font-size: clamp(2rem, 4vw, 3rem); }
+.topo-texto { padding-bottom: 80px; }
+.topo .texto { margin-top: 24px; }
 
 /* Cartões de serviço */
 .cartoes { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
