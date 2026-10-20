@@ -1,10 +1,12 @@
-/* Cores e fontes provisórias: ver docs/identidade-visual.md */
+/* Cores tiradas do logo da Conecta: ver docs/identidade-visual.md */
 :root {
-  --cor-principal: #0B3D5C;
-  --cor-destaque: #1FA37A;
+  --cor-principal: #2F5A8C;
+  --cor-principal-escura: #22446C;
+  --cor-destaque: #3D86C6;
+  --cor-destaque-clara: #A9D1F2;
   --cor-texto: #1F2933;
   --cor-fundo: #FFFFFF;
-  --cor-fundo-alt: #F3F6F8;
+  --cor-fundo-alt: #EEF3F8;
   --largura: 1100px;
   --raio: 8px;
 }
@@ -29,18 +31,26 @@ img { max-width: 100%; display: block; }
   display: flex; align-items: center; justify-content: space-between;
   min-height: 64px;
 }
-.logo { color: #fff; font-weight: 700; font-size: 1.4rem; text-decoration: none; }
+.logo { display: flex; align-items: center; }
+.logo img { height: 34px; width: auto; }
 .menu { display: flex; gap: 24px; list-style: none; }
 .menu a { color: #fff; text-decoration: none; }
-.menu a:hover, .menu a[aria-current="page"] { color: var(--cor-destaque); }
+.menu a:hover, .menu a[aria-current="page"] { color: var(--cor-destaque-clara); }
 .menu-botao {
   display: none; background: none; border: 0; color: #fff;
   font-size: 1.6rem; cursor: pointer;
 }
 
 /* Seções */
-.hero { background: var(--cor-fundo-alt); padding: 80px 0; text-align: center; }
-.hero h1 { font-size: 2.4rem; color: var(--cor-principal); margin-bottom: 16px; }
+/* Fundo com o padrão de circuito do logo */
+.hero {
+  background:
+    linear-gradient(rgba(47, 90, 140, 0.82), rgba(34, 68, 108, 0.92)),
+    url("../img/fundo-circuito.jpg") center / cover;
+  color: #fff; padding: 72px 0; text-align: center;
+}
+.hero-logo { width: 180px; height: auto; margin: 0 auto 32px; }
+.hero h1 { font-size: 2.4rem; margin-bottom: 16px; }
 .hero p { max-width: 640px; margin: 0 auto 24px; }
 
 .secao { padding: 64px 0; }
@@ -48,17 +58,20 @@ img { max-width: 100%; display: block; }
 .secao-alt { background: var(--cor-fundo-alt); }
 
 .botao {
-  display: inline-block; background: var(--cor-destaque); color: #fff;
+  display: inline-block; background: var(--cor-principal); color: #fff;
   padding: 12px 24px; border-radius: var(--raio); text-decoration: none; font-weight: 600;
 }
-.botao:hover { filter: brightness(0.92); }
+.botao:hover { background: var(--cor-principal-escura); }
+.botao-claro { background: #fff; color: var(--cor-principal); }
+.botao-claro:hover { background: var(--cor-destaque-clara); }
 
 .cartoes {
   display: grid; gap: 24px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 .cartao {
-  background: var(--cor-fundo); border: 1px solid #DDE3E8;
+  background: var(--cor-fundo); border: 1px solid #D6E2EE;
+  border-top: 4px solid var(--cor-destaque);
   border-radius: var(--raio); padding: 24px;
 }
 .cartao h3 { color: var(--cor-principal); margin-bottom: 8px; }
@@ -67,7 +80,7 @@ img { max-width: 100%; display: block; }
 .mapa { width: 100%; height: 360px; border: 0; border-radius: var(--raio); }
 
 /* Rodapé */
-.rodape { background: var(--cor-principal); color: #fff; padding: 32px 0; font-size: 0.9rem; }
+.rodape { background: var(--cor-principal-escura); color: #fff; padding: 32px 0; font-size: 0.9rem; }
 .rodape a { color: #fff; }
 
 /* Botão flutuante de WhatsApp */
@@ -87,6 +100,7 @@ img { max-width: 100%; display: block; }
   }
   .menu.aberto { display: flex; }
   .menu a { display: block; padding: 12px 16px; }
-  .hero { padding: 56px 0; }
+  .hero { padding: 48px 0; }
+  .hero-logo { width: 130px; }
   .hero h1 { font-size: 1.8rem; }
 }
