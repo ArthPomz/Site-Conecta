@@ -7,14 +7,14 @@
   <meta name="description" content="Serviços da Conecta: abertura de empresas, assessoria contábil e fiscal, departamento pessoal, BPO financeiro e produtor rural.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
   <header class="cabecalho">
     <div class="container">
-      <a class="logo" href="../index.html"><img src="../assets/img/logo-horizontal.png" alt="Conecta Gestão Contábil" width="150" height="40"></a>
+      <a class="logo" href="../index.html"><img src="../assets/img/logo-horizontal-azul.png" alt="Conecta Gestão Contábil" width="150" height="40"></a>
       <nav aria-label="Menu principal">
         <button class="menu-botao" aria-label="Abrir menu" aria-expanded="false">&#9776;</button>
         <ul class="menu">
@@ -22,19 +22,25 @@
           <li><a href="../pages/servicos.html" aria-current="page">Serviços</a></li>
           <li><a href="../pages/sobre.html">Sobre</a></li>
           <li><a href="../pages/contato.html">Contato</a></li>
+          <li><a class="botao botao-primario" href="https://wa.me/5527996970273" target="_blank" rel="noopener">Fale conosco</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main>
+    <section class="topo">
+      <div class="container">
+        <h1 class="titulo">Nossos <span>serviços</span></h1>
+        <p class="subtitulo">Conheça tudo o que a Conecta pode fazer pela sua empresa.</p>
+      </div>
+    </section>
+
     <section class="secao">
       <div class="container">
-        <h1>Serviços</h1>
-        <p style="margin-bottom:32px">Conheça tudo o que a Conecta pode fazer pela sua empresa.</p>
         <div class="cartoes">
-          <article class="cartao">
-            <h3>Abertura de Empresas</h3>
+          <article class="cartao" id="abertura-de-empresas">
+            <div class="cartao-cabeca"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01"/></svg><h3>Abertura de Empresas</h3></div>
             <p>Está procurando saber como abrir uma empresa? Qual a tributação? Quais as exigências legais? Não se preocupe: a Conecta te orienta e cuida de todo o processo de abertura de empresa para você.</p>
             <ul>
               <li>Elaboração de projeto e análise de carga tributária</li>
@@ -45,8 +51,8 @@
               <li>Legalização de empresas nos Órgãos Públicos</li>
             </ul>
           </article>
-          <article class="cartao">
-            <h3>Assessoria Contábil</h3>
+          <article class="cartao" id="assessoria-contabil">
+            <div class="cartao-cabeca"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h8"/></svg><h3>Assessoria Contábil</h3></div>
             <p>Produzimos relatórios contábeis mensais com foco gerencial com o objetivo de promover uma eficiência maior na administração financeira de sua empresa, apontando o melhor caminho para redução de gastos, impostos e processos internos.</p>
             <ul>
               <li>Planejamento Contábil</li>
@@ -60,8 +66,8 @@
               <li>Assessoria contábil às empresas optantes pelo Lucro Real, Presumido, Simples Nacional, Imunes e Isentas</li>
             </ul>
           </article>
-          <article class="cartao">
-            <h3>Assessoria Fiscal/Tributária</h3>
+          <article class="cartao" id="assessoria-fiscal-tributaria">
+            <div class="cartao-cabeca"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v3h3"/><path d="M9 16l6-6"/><circle cx="9.5" cy="10.5" r="1"/><circle cx="14.5" cy="15.5" r="1"/></svg><h3>Assessoria Fiscal/Tributária</h3></div>
             <p>Analisamos o melhor regime tributário, para a sua empresa ter a maior eficiência tributária possível; calculamos e emitimos as guias de pagamento dos seus tributos; planejamos juntamente com a empresa.</p>
             <ul>
               <li>Planejamento tributário</li>
@@ -74,8 +80,21 @@
               <li>Escriturações digitais EFD – ICMS / IPI, EFD – Contribuições</li>
             </ul>
           </article>
-          <article class="cartao">
-            <h3>Departamento Pessoal</h3>
+          <article class="cartao" id="bpo-financeiro">
+            <div class="cartao-cabeca"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M6 16v-4M10 16V8M14 16v-6M18 16V5"/></svg><h3>BPO Financeiro</h3></div>
+            <p>Deixe a gestão das finanças conosco para que você possa ganhar tempo, aumentar a eficiência e ao mesmo tempo diminuindo custos administrativos do seu negócio.</p>
+            <ul>
+              <li>Controle das contas a pagar e receber</li>
+              <li>Gestão do fluxo de caixa</li>
+              <li>Emissão de notas fiscais</li>
+              <li>Conciliação de contas</li>
+              <li>Geração de relatórios</li>
+              <li>Análise de indicadores de evolução dos custos e despesas</li>
+              <li>Análise de sincronia entre os prazos de pagamento e recebimento</li>
+            </ul>
+          </article>
+          <article class="cartao" id="departamento-pessoal">
+            <div class="cartao-cabeca"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.8.4 5 2.8 5 5.8"/></svg><h3>Departamento Pessoal</h3></div>
             <p>Atendimento personalizado e tecnologicamente avançado para todos os seus serviços de departamento de pessoal. Todas as informações e movimentação do seu departamento pessoal são enviadas para nós de forma eletrônica, sem complicação e de forma segura.</p>
             <ul>
               <li>Controle e Execução de Rotinas Trabalhistas</li>
@@ -93,22 +112,9 @@
               <li>Orientação sobre benefícios obrigatórios e facultativos</li>
             </ul>
           </article>
-          <article class="cartao">
-            <h3>BPO Financeiro</h3>
-            <p>Deixe a gestão das finanças conosco para que você possa ganhar tempo, aumentar a eficiência e ao mesmo tempo diminuindo custos administrativos do seu negócio.</p>
-            <ul>
-              <li>Controle das contas a pagar e receber</li>
-              <li>Gestão do fluxo de caixa</li>
-              <li>Emissão de notas fiscais</li>
-              <li>Conciliação de contas</li>
-              <li>Geração de relatórios</li>
-              <li>Análise de indicadores de evolução dos custos e despesas</li>
-              <li>Análise de sincronia entre os prazos de pagamento e recebimento</li>
-            </ul>
-          </article>
-          <article class="cartao">
-            <h3>Produtor Rural Pessoa Física e Pessoa Jurídica</h3>
-            <p>análise de melhor forma de tributação conforme cada caso, acompanhamento mensal do resultado da atividade rural, elaboração de livro caixa da atividade rural, LCDPR, ITR, CCIR, regularização de documentos do seu imóvel rural, gestão patrimonial.</p>
+          <article class="cartao" id="produtor-rural-pessoa-fisica-e-pessoa-juridica">
+            <div class="cartao-cabeca"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11c0-4 3-7 7-7 0 4-3 7-7 7z"/><path d="M12 14c0-3-2.5-5.5-6-5.5 0 3 2.5 5.5 6 5.5z"/><path d="M5 21h14"/></svg><h3>Produtor Rural Pessoa Física e Pessoa Jurídica</h3></div>
+            <p>Análise da melhor forma de tributação conforme cada caso, acompanhamento mensal do resultado da atividade rural, elaboração de livro caixa da atividade rural, LCDPR, ITR, CCIR, regularização de documentos do seu imóvel rural, gestão patrimonial.</p>
           </article>
         </div>
       </div>
@@ -117,13 +123,45 @@
 
   <footer class="rodape">
     <div class="container">
-      <p><strong>Conecta Gestão Contábil</strong> · Rua Stefano Broseghini, 142, Fundão – ES, CEP 29185-000</p>
-      <p>(27) 99697-0273 · <a href="mailto:contato@conectagcont.com.br">contato@conectagcont.com.br</a></p>
-      <p>&copy; <span id="ano"></span> Conecta. Todos os direitos reservados.</p>
+      <div class="rodape-grade">
+        <div class="rodape-marca">
+          <img src="../assets/img/logo-horizontal.png" alt="Conecta Gestão Contábil" width="150" height="40">
+          <p>Contabilidade próxima e digital para empresas e produtores rurais.</p>
+        </div>
+        <div>
+          <h4>SERVIÇOS</h4>
+          <ul>
+            <li><a href="../pages/servicos.html#abertura-de-empresas">Abertura de Empresas</a></li>
+            <li><a href="../pages/servicos.html#assessoria-contabil">Assessoria Contábil</a></li>
+            <li><a href="../pages/servicos.html#assessoria-fiscal-tributaria">Assessoria Fiscal/Tributária</a></li>
+            <li><a href="../pages/servicos.html#bpo-financeiro">BPO Financeiro</a></li>
+            <li><a href="../pages/servicos.html#departamento-pessoal">Departamento Pessoal</a></li>
+            <li><a href="../pages/servicos.html#produtor-rural-pessoa-fisica-e-pessoa-juridica">Produtor Rural</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>A CONECTA</h4>
+          <ul>
+            <li><a href="../pages/sobre.html">Sobre nós</a></li>
+            <li><a href="../index.html#como-funciona">Como funciona</a></li>
+            <li><a href="../index.html#perguntas">Perguntas frequentes</a></li>
+            <li><a href="../pages/contato.html">Contato</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>CONTATO</h4>
+          <ul>
+            <li><a href="https://wa.me/5527996970273" target="_blank" rel="noopener">(27) 99697-0273</a></li>
+            <li><a href="mailto:contato@conectagcont.com.br">contato@conectagcont.com.br</a></li>
+            <li>Rua Stefano Broseghini, 142<br>Fundão – ES, 29185-000</li>
+          </ul>
+        </div>
+      </div>
+      <p class="rodape-fim">&copy; <span id="ano"></span> Conecta Gestão Contábil. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <a class="whatsapp" href="https://wa.me/5527996970273" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="whatsapp" href="https://wa.me/5527996970273" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

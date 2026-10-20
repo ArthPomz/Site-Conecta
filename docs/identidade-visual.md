@@ -7,16 +7,30 @@ Baseada no logo enviado pelo cliente (`assets/img/logo-original.jpg`): símbolo 
 | Uso | Cor | Variável CSS |
 | --- | --- | --- |
 | Principal (azul do logo) | `#2F5A8C` | `--cor-principal` |
-| Principal escura (rodapé, hover) | `#22446C` | `--cor-principal-escura` |
+| Principal escura (rodapé, hover) | `#1B3557` | `--cor-principal-escura` |
+| Vibrante (botões principais, ponto dos títulos) | `#5CC8FF` | `--cor-vibrante` |
 | Destaque (linhas do circuito) | `#3D86C6` | `--cor-destaque` |
 | Destaque clara (menu ativo) | `#A9D1F2` | `--cor-destaque-clara` |
 | Texto | `#1F2933` | `--cor-texto` |
+| Texto suave | `#4A5563` | `--cor-texto-suave` |
 | Fundo | `#FFFFFF` | `--cor-fundo` |
-| Fundo alternativo | `#EEF3F8` | `--cor-fundo-alt` |
+| Fundo alternativo | `#F4F7FB` | `--cor-fundo-alt` |
 
 As variáveis ficam no topo de `assets/css/style.css`. Mudando ali, o site inteiro muda.
 
-O azul de destaque (`#3D86C6`) não tem contraste suficiente para texto branco pequeno. Use-o em bordas e detalhes, e use `--cor-principal` para botões com texto branco.
+O azul de destaque (`#3D86C6`) não tem contraste suficiente para texto branco pequeno. Use-o em palavras destacadas dos títulos e em detalhes. O azul vibrante (`#5CC8FF`) sempre leva texto escuro (`--cor-principal-escura`).
+
+## Estilo visual
+
+Inspirado no visual de sites de contabilidade digital (referência dada pelo cliente: Contabilizei), sem copiar textos nem telas:
+
+- Cabeçalho branco com o logo em azul e botão "Fale conosco" em pílula.
+- Títulos grandes em negrito, com palavras destacadas em azul e um ponto final na cor vibrante.
+- Botões em formato de pílula: cheio (vibrante) e contorno (azul).
+- Página inicial em duas colunas, com painel curvo de circuito à direita.
+- Cartões com fundo em degradê azul-claro, cantos de 16px e ícones de linha.
+- Seções: serviços, como funciona, comparativo, perguntas frequentes e faixa de chamada.
+- Rodapé azul-escuro com colunas de links.
 
 ## Tipografia
 
@@ -24,12 +38,13 @@ O azul de destaque (`#3D86C6`) não tem contraste suficiente para texto branco p
 
 ## Arquivos do logo
 
-Todos em `assets/img/`. As versões em PNG foram recortadas do logo original, com fundo transparente e desenho em branco, por isso só funcionam sobre fundo escuro.
+Todos em `assets/img/`. As versões em PNG foram recortadas do logo original, com fundo transparente. As brancas só funcionam sobre fundo escuro.
 
 | Arquivo | Uso |
 | --- | --- |
 | `logo-original.jpg` | Arte original enviada pelo cliente |
-| `logo-horizontal.png` | Cabeçalho do site (símbolo ao lado de "CONECTA", sem "Gestão Contábil") |
+| `logo-horizontal.png` | Versão branca (símbolo + "CONECTA"), usada no rodapé |
+| `logo-horizontal-azul.png` | Versão azul, usada no cabeçalho branco |
 | `logo-vertical.png` | Destaque na página inicial |
 | `favicon.png` | Ícone da aba do navegador |
 | `fundo-circuito.jpg` | Fundo com o padrão de circuito |
