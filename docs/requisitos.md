@@ -30,6 +30,5 @@ Apresentar a Conecta, seus serviços contábeis e facilitar o contato de potenci
 ## Pendências com o cliente
 
 - Logo em vetor (SVG, AI ou PDF), se existir. O logo em imagem e as cores já foram recebidos.
-- Texto da página "Quem somos".
 - Fotos do escritório ou da equipe.
 - Domínio (o e-mail sugere `conectagcont.com.br`).
