@@ -29,7 +29,7 @@ Todos em `assets/img/`. As versões em PNG foram recortadas do logo original, co
 | Arquivo | Uso |
 | --- | --- |
 | `logo-original.jpg` | Arte original enviada pelo cliente |
-| `logo-horizontal.png` | Cabeçalho do site (símbolo ao lado do nome) |
+| `logo-horizontal.png` | Cabeçalho do site (símbolo ao lado de "CONECTA", sem "Gestão Contábil") |
 | `logo-vertical.png` | Destaque na página inicial |
 | `favicon.png` | Ícone da aba do navegador |
 | `fundo-circuito.jpg` | Fundo com o padrão de circuito |
