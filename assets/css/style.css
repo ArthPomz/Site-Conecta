@@ -134,6 +134,7 @@ img { max-width: 100%; display: block; }
 /* Cartões de serviço */
 .cartoes { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .cartoes.duas-colunas { grid-template-columns: repeat(2, 1fr); }
+.cartoes.duas-colunas .cartao p { text-align: justify; hyphens: auto; }
 .topo-texto + .secao { padding-top: 56px; }
 .cartao {
   display: flex; flex-direction: column; gap: 12px;
