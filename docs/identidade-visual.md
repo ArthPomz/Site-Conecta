@@ -27,7 +27,7 @@ Inspirado no visual de sites de contabilidade digital (referência dada pelo cli
 - Cabeçalho branco com o logo em azul e botão "Fale conosco" em pílula.
 - Títulos grandes em negrito, com palavras destacadas em azul e um ponto final na cor vibrante.
 - Botões em formato de pílula: cheio (vibrante) e contorno (azul).
-- Página inicial com uma faixa de circuito de borda a borda: texto branco à esquerda e o logo à direita.
+- Página inicial com uma faixa de circuito de borda a borda: texto branco à esquerda e o logo à direita. No modo escuro, a parte de baixo da faixa se mistura com o fundo da página (variável `--hero-fundo`).
 - Cartões com fundo em degradê azul-claro, cantos de 16px e ícones de linha.
 - Seções: serviços, como funciona, comparativo, perguntas frequentes e faixa de chamada.
 - Rodapé azul-escuro com colunas de links.
