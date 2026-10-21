@@ -53,7 +53,7 @@ if (temaBotao) {
 
 // Animações: os blocos surgem suavemente quando aparecem na tela
 const alvos = document.querySelectorAll(
-  ".secao-cabeca, .carrossel, :not(.carrossel-trilho) > .cartao, .passo, .tabela, .faq-painel, .faq-caixa, .chamada, .contato-item, .mapa, .topo .titulo, .topo .subtitulo, .topo .texto"
+  ".secao-cabeca, .carrossel, :not(.carrossel-trilho) > .cartao, .passo, .tabela, .faq-painel, .faq-caixa, .chamada, .instagram-texto, .instagram-feed, .contato-item, .mapa, .topo .titulo, .topo .subtitulo, .topo .texto"
 );
 const poucoMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 if ("IntersectionObserver" in window && !poucoMovimento) {

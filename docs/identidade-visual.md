@@ -94,3 +94,7 @@ O texto da mensagem pronta e o número ficam em `assets/js/main.js`, na parte "B
 ## Instagram
 
 O link para o Instagram aparece no rodapé de todas as páginas, na página de contato e na faixa "Vamos conversar" da página inicial. O perfil é [@conectacontabilfundao](https://www.instagram.com/conectacontabilfundao/). Se o usuário mudar, procure `conectacontabilfundao` nos arquivos `.html` e troque.
+
+### Posts do Instagram na página inicial
+
+A página inicial tem uma seção "Acompanhe a Conecta no Instagram". Por enquanto ela mostra um cartão com o perfil e um botão para seguir. Para os posts aparecerem sozinhos, é preciso um serviço de widget de Instagram (por exemplo Behold, LightWidget ou SnapWidget). Alguém com acesso à conta da Conecta faz login no serviço, conecta o Instagram e copia o código que ele gera. Esse código entra no `index.html`, no lugar do cartão marcado com o comentário "Posts do Instagram". Depois disso, cada post novo aparece no site sem precisar mexer em nada.

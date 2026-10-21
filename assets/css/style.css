@@ -232,12 +232,29 @@ img { max-width: 100%; display: block; }
 .chamada .titulo { color: #fff; }
 .chamada .botoes { justify-content: center; }
 .chamada p { color: var(--cor-destaque-clara); margin-bottom: 32px; font-size: 1.1rem; }
-.chamada-instagram {
-  display: inline-flex; align-items: center; gap: 8px; margin-top: 28px;
-  color: #fff; font-weight: 600; text-decoration: none; opacity: 0.9;
+.rodape-instagram svg { width: 20px; height: 20px; flex: none; }
+
+/* Instagram na página inicial */
+.instagram { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.instagram-texto .subtitulo { margin: 16px 0 32px; }
+.instagram-perfil {
+  display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center;
+  padding: 48px 32px; border-radius: 24px; text-decoration: none; color: #fff;
+  background:
+    linear-gradient(160deg, rgba(47, 90, 140, 0.55), rgba(27, 53, 87, 0.95)),
+    url("../img/circuito.svg") center / cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.chamada-instagram:hover { opacity: 1; text-decoration: underline; }
-.chamada-instagram svg, .rodape-instagram svg { width: 20px; height: 20px; flex: none; }
+.instagram-perfil, [data-tema="escuro"] .instagram-perfil { color: #fff; }
+.instagram-perfil:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(10, 25, 45, 0.25); }
+.instagram-perfil img { width: 72px; height: 72px; border-radius: 18px; margin-bottom: 8px; }
+.instagram-perfil strong { font-size: 1.2rem; }
+.instagram-perfil > span { color: var(--cor-destaque-clara); font-size: 0.95rem; }
+.instagram-perfil .instagram-ver {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 16px;
+  padding: 10px 20px; border-radius: 999px; background: rgba(255, 255, 255, 0.12); color: #fff; font-weight: 600;
+}
+.instagram-ver svg { width: 18px; height: 18px; }
 .rodape-instagram { display: inline-flex; align-items: center; gap: 8px; }
 
 /* Contato */
@@ -331,7 +348,7 @@ img { max-width: 100%; display: block; }
 
 /* Tablet */
 @media (max-width: 960px) {
-  .hero, .comparativo, .faq, .contato-grade { grid-template-columns: 1fr; }
+  .hero, .comparativo, .faq, .contato-grade, .instagram { grid-template-columns: 1fr; }
   .hero-texto { padding: 24px 24px 56px; }
   .hero { background: linear-gradient(180deg, rgba(0, 0, 0, 0) 80%, var(--hero-fundo) 100%), linear-gradient(180deg, rgba(20, 40, 66, 0.8), rgba(20, 40, 66, 0.6)), url("../img/circuito.svg") center / cover, #2F5A8C; }
   .hero-painel { order: -1; padding: 32px 24px 0; }
