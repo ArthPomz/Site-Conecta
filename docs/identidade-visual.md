@@ -27,7 +27,7 @@ Inspirado no visual de sites de contabilidade digital (referência dada pelo cli
 - Cabeçalho branco com o logo em azul e botão "Fale conosco" em pílula.
 - Títulos grandes em negrito, com palavras destacadas em azul e um ponto final na cor vibrante.
 - Botões em formato de pílula: cheio (vibrante) e contorno (azul).
-- Página inicial em duas colunas, com painel curvo de circuito à direita.
+- Página inicial com uma faixa de circuito de borda a borda: texto branco à esquerda e o logo à direita.
 - Cartões com fundo em degradê azul-claro, cantos de 16px e ícones de linha.
 - Seções: serviços, como funciona, comparativo, perguntas frequentes e faixa de chamada.
 - Rodapé azul-escuro com colunas de links.
@@ -65,6 +65,7 @@ Todos em `assets/img/`. As versões em PNG foram recortadas do logo original, co
 | `logo-horizontal-azul.png` | Versão azul, usada no cabeçalho branco |
 | `logo-vertical.png` | Destaque na página inicial |
 | `favicon.png` | Ícone da aba do navegador |
-| `fundo-circuito.jpg` | Fundo com o padrão de circuito |
+| `circuito.svg` | Padrão de circuito em vetor (nítido em qualquer tela), usado na faixa da página inicial e nas perguntas frequentes |
+| `fundo-circuito.jpg` | Recorte do circuito do logo original (não usado mais, fica como referência) |
 
 Se o cliente tiver o logo em vetor (SVG, AI ou PDF), vale substituir os PNGs para ter mais nitidez.
