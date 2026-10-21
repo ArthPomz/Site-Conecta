@@ -329,7 +329,7 @@ img { max-width: 100%; display: block; }
   }
   .menu.aberto { display: flex; }
   .menu a { display: block; padding: 12px 24px; }
-  .menu .botao { margin: 8px 24px 0; }
+  .menu .botao { margin: 8px 24px 0; width: auto; text-align: center; }
   .secao { padding: 64px 0; }
   .botao { width: 100%; }
   .hero-painel img { width: 150px; }

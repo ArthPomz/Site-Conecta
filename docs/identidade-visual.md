@@ -31,6 +31,7 @@ Inspirado no visual de sites de contabilidade digital (referência dada pelo cli
 - Cartões com fundo em degradê azul-claro, cantos de 16px e ícones de linha.
 - Seções: serviços, como funciona, comparativo, perguntas frequentes e faixa de chamada.
 - Rodapé azul-escuro com colunas de links.
+- No menu, "Área do cliente" abre o portal eContador (Alterdata) em uma nova aba.
 
 ## Modo noturno
 
