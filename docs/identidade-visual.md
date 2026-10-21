@@ -57,21 +57,22 @@ O azul do logo, o azul vibrante dos botões e o painel de circuito continuam igu
 
 ## Arquivos do logo
 
-Todos em `assets/img/`. As versões em PNG foram recortadas do logo original, com fundo transparente. As brancas só funcionam sobre fundo escuro.
+Todos em `assets/img/`. As versões em SVG são vetoriais, então ficam nítidas em qualquer tamanho. As brancas só funcionam sobre fundo escuro.
 
 | Arquivo | Uso |
 | --- | --- |
 | `logo-original-novo.png` | Logo atual enviado pelo cliente (outubro de 2026) |
 | `logo-original.jpg` | Logo antigo, guardado como referência |
-| `logo-horizontal.png` | Versão branca (símbolo + "CONECTA"), usada no rodapé |
-| `logo-horizontal-azul.png` | Versão azul (símbolo + "CONECTA"), usada no cabeçalho |
-| `logo-completo.png` | Versão branca completa, com "GESTÃO CONTÁBIL" ao lado do símbolo |
-| `logo-vertical.png` | Símbolo em cima e o nome embaixo, usada no topo da página inicial e nas perguntas frequentes |
-| `favicon.png` | Ícone da aba do navegador e do balão do WhatsApp |
+| `logo-horizontal.svg` | Versão branca (símbolo + "CONECTA"), usada no rodapé |
+| `logo-horizontal-azul.svg` | Versão azul (símbolo + "CONECTA"), usada no cabeçalho |
+| `logo-completo.svg` | Versão branca completa, com "GESTÃO CONTÁBIL" ao lado do símbolo |
+| `logo-vertical.svg` | Símbolo em cima e o nome embaixo, usada no topo da página inicial e nas perguntas frequentes |
+| `icone.svg` | Símbolo branco em um quadrado azul arredondado, base do ícone |
+| `favicon.png` | Ícone da aba do navegador e do balão do WhatsApp (gerado a partir de `icone.svg`) |
 | `circuito.svg` | Padrão de circuito em vetor (nítido em qualquer tela), usado na faixa da página inicial e nas perguntas frequentes |
 | `fundo-circuito.jpg` | Recorte do circuito do logo original (não usado mais, fica como referência) |
 
-O logo novo chegou em uma imagem pequena (296x96 pixels), então os PNGs foram ampliados a partir dela. Se o cliente tiver o logo em vetor (SVG, AI ou PDF) ou em alta resolução, vale substituir os PNGs para ter mais nitidez.
+O logo novo chegou em uma imagem pequena (296x96 pixels). Para ficar nítido, ele foi redesenhado em vetor: o símbolo foi refeito com círculos ajustados à imagem original, e as letras usam a fonte Montserrat (licença livre, OFL) convertida em contorno. Se o cliente tiver o arquivo oficial em vetor (SVG, AI ou PDF), vale trocar pelos oficiais.
 
 ## Animações
 
