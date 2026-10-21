@@ -81,3 +81,9 @@ Animações leves para o site parecer mais fluido. O código fica no fim de `ass
 - A troca entre modo claro e escuro muda as cores com suavidade.
 - O cabeçalho ganha uma sombra quando a página rola.
 - Quem ativa "reduzir movimento" no celular ou no computador vê o site sem animações.
+
+## Balão do WhatsApp
+
+O botão redondo do WhatsApp, no canto da tela, abre um balão de conversa. Ele abre sozinho uma vez quando a pessoa chega ao fim da página, e também ao tocar no botão. O balão traz uma mensagem pronta, que a pessoa pode editar. Ao tocar em "Enviar no WhatsApp", abre o WhatsApp da Conecta, (27) 99697-0273, com a mensagem já escrita. Se a pessoa fechar o balão, ele não abre sozinho de novo naquela página.
+
+O texto da mensagem pronta e o número ficam em `assets/js/main.js`, na parte "Balão do WhatsApp".

@@ -89,3 +89,52 @@ if (cabecalho) {
   window.addEventListener("scroll", marcarRolagem, { passive: true });
   marcarRolagem();
 }
+
+// Balão do WhatsApp: abre sozinho quando a pessoa chega ao fim da página,
+// com uma mensagem pronta que ela pode editar antes de enviar
+const whatsapp = document.querySelector(".whatsapp");
+if (whatsapp) {
+  const numero = "5527996970273";
+  const icone = new URL("../img/favicon.png", document.currentScript.src).href;
+  const balao = document.createElement("div");
+  balao.className = "whatsapp-balao";
+  balao.setAttribute("role", "dialog");
+  balao.setAttribute("aria-label", "Conversar no WhatsApp");
+  balao.innerHTML = `
+    <div class="whatsapp-balao-topo">
+      <img src="${icone}" alt="">
+      <div><strong>Conecta Gestão Contábil</strong><span>WhatsApp</span></div>
+      <button class="whatsapp-balao-fechar" type="button" aria-label="Fechar">&times;</button>
+    </div>
+    <form>
+      <p class="whatsapp-balao-fala">Olá! Como podemos ajudar a sua empresa?</p>
+      <label class="sr-only" for="whatsapp-mensagem">Sua mensagem</label>
+      <textarea id="whatsapp-mensagem">Olá! Vim pelo site da Conecta e gostaria de falar com um contador.</textarea>
+      <button class="botao botao-primario" type="submit">Enviar no WhatsApp</button>
+    </form>`;
+  document.body.appendChild(balao);
+
+  const abrir = () => { balao.classList.add("aberto"); whatsapp.setAttribute("aria-expanded", "true"); };
+  const fechar = () => { balao.classList.remove("aberto"); whatsapp.setAttribute("aria-expanded", "false"); };
+  let fechadoPelaPessoa = false;
+
+  whatsapp.addEventListener("click", (e) => {
+    e.preventDefault();
+    balao.classList.contains("aberto") ? fechar() : abrir();
+  });
+  balao.querySelector(".whatsapp-balao-fechar").addEventListener("click", () => {
+    fechadoPelaPessoa = true;
+    fechar();
+  });
+  balao.querySelector("form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const texto = balao.querySelector("textarea").value.trim();
+    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`, "_blank", "noopener");
+  });
+
+  // Abre uma vez ao chegar perto do fim da página (se a pessoa não tiver fechado)
+  window.addEventListener("scroll", () => {
+    const noFim = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40;
+    if (noFim && !fechadoPelaPessoa && !balao.classList.contains("aberto")) abrir();
+  }, { passive: true });
+}
