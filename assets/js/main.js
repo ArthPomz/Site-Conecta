@@ -50,3 +50,42 @@ if (temaBotao) {
     try { localStorage.setItem("tema", novo); } catch (e) {}
   });
 }
+
+// Animações: os blocos surgem suavemente quando aparecem na tela
+const alvos = document.querySelectorAll(
+  ".secao-cabeca, .carrossel, :not(.carrossel-trilho) > .cartao, .passo, .tabela, .faq-painel, .faq-caixa, .chamada, .contato-item, .mapa, .topo .titulo, .topo .subtitulo, .topo .texto"
+);
+const poucoMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if ("IntersectionObserver" in window && !poucoMovimento) {
+  document.documentElement.classList.add("animar");
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      if (!entrada.isIntersecting) return;
+      const alvo = entrada.target;
+      alvo.classList.add("visivel");
+      observador.unobserve(alvo);
+      // Depois de aparecer, o bloco volta ao normal (e o efeito do mouse funciona)
+      const atraso = parseFloat(alvo.style.getPropertyValue("--atraso")) || 0;
+      setTimeout(() => {
+        alvo.classList.remove("revelar", "visivel");
+        alvo.style.removeProperty("--atraso");
+      }, (atraso + 0.8) * 1000);
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  alvos.forEach((alvo) => {
+    // Itens lado a lado aparecem um depois do outro
+    const irmaos = [...alvo.parentElement.children].filter((el) => el.matches(".cartao, .passo, .contato-item"));
+    const posicao = irmaos.indexOf(alvo);
+    if (posicao > 0) alvo.style.setProperty("--atraso", `${Math.min(posicao, 3) * 0.12}s`);
+    alvo.classList.add("revelar");
+    observador.observe(alvo);
+  });
+}
+
+// Cabeçalho ganha uma sombra depois que a página rola
+const cabecalho = document.querySelector(".cabecalho");
+if (cabecalho) {
+  const marcarRolagem = () => cabecalho.classList.toggle("rolado", window.scrollY > 8);
+  window.addEventListener("scroll", marcarRolagem, { passive: true });
+  marcarRolagem();
+}

@@ -155,7 +155,7 @@ img { max-width: 100%; display: block; }
 .carrossel { position: relative; }
 .carrossel .carrossel-trilho {
   display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory;
-  scroll-behavior: smooth; scrollbar-width: none; padding: 4px 2px;
+  scroll-behavior: smooth; scrollbar-width: none; padding: 8px 4px 16px;
 }
 .carrossel-trilho::-webkit-scrollbar { display: none; }
 .carrossel-trilho .cartao { flex: 0 0 calc((100% - 48px) / 3); scroll-snap-align: start; }
@@ -347,4 +347,44 @@ img { max-width: 100%; display: block; }
   .carrossel-seta { width: 40px; height: 40px; font-size: 1.6rem; }
   .carrossel-seta.anterior { left: -8px; }
   .carrossel-seta.proximo { right: -8px; }
+}
+
+/* Animações
+   O JS (main.js) marca o <html> com a classe "animar" e os blocos com
+   "revelar". Sem JS, nada fica escondido. */
+html { scroll-behavior: smooth; }
+body, .cabecalho, .rodape, .topo, .secao-alt, .cartao, .passo, .faq-caixa, .tabela td, .tabela th {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+.cabecalho { transition: background-color 0.4s ease, box-shadow 0.3s ease; }
+.cabecalho.rolado { box-shadow: 0 6px 24px rgba(10, 25, 45, 0.18); }
+
+/* Blocos que surgem ao rolar a página */
+.animar .revelar {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--atraso, 0s);
+}
+.animar .revelar.visivel { opacity: 1; transform: none; }
+
+/* Entrada do topo da página inicial */
+@keyframes surgir { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.hero-texto > * { animation: surgir 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.hero-texto > :nth-child(2) { animation-delay: 0.15s; }
+.hero-texto > :nth-child(3) { animation-delay: 0.3s; }
+.hero-painel { animation: surgir 1s 0.2s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.hero-painel img { animation: flutuar 6s ease-in-out 1.2s infinite; }
+
+/* Cartões e passos sobem um pouco ao passar o mouse */
+.cartao, .passo { transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.7s ease, background-color 0.4s ease; }
+.cartao:hover, .passo:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(10, 25, 45, 0.18); }
+.whatsapp { transition: transform 0.2s ease; }
+.whatsapp:hover { transform: scale(1.08); }
+
+/* Quem pede menos movimento no sistema não vê animações */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .animar .revelar { opacity: 1; transform: none; }
 }

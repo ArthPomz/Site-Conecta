@@ -70,3 +70,14 @@ Todos em `assets/img/`. As versões em PNG foram recortadas do logo original, co
 | `fundo-circuito.jpg` | Recorte do circuito do logo original (não usado mais, fica como referência) |
 
 Se o cliente tiver o logo em vetor (SVG, AI ou PDF), vale substituir os PNGs para ter mais nitidez.
+
+## Animações
+
+Animações leves para o site parecer mais fluido. O código fica no fim de `assets/css/style.css` e de `assets/js/main.js`.
+
+- O topo da página inicial entra com o texto subindo aos poucos, e o logo flutua devagar.
+- Títulos, cartões, passos, tabela e perguntas surgem suavemente quando aparecem na tela. Itens lado a lado aparecem um depois do outro.
+- Cartões e passos sobem um pouco ao passar o mouse. O botão do WhatsApp cresce um pouco.
+- A troca entre modo claro e escuro muda as cores com suavidade.
+- O cabeçalho ganha uma sombra quando a página rola.
+- Quem ativa "reduzir movimento" no celular ou no computador vê o site sem animações.
