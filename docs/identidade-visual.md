@@ -1,6 +1,6 @@
 # Identidade visual
 
-Baseada no logo enviado pelo cliente (`assets/img/logo-original.jpg`): símbolo e nome em branco sobre fundo azul com padrão de circuito.
+Baseada no logo da Conecta. A versão atual, atualizada em outubro de 2026, é `assets/img/logo-original-novo.png`: o símbolo "C" com um círculo, e ao lado "CONECTA" com "GESTÃO CONTÁBIL" embaixo, em branco sobre azul escuro. O logo antigo (`logo-original.jpg`) fica guardado como referência.
 
 ## Cores
 
@@ -61,15 +61,17 @@ Todos em `assets/img/`. As versões em PNG foram recortadas do logo original, co
 
 | Arquivo | Uso |
 | --- | --- |
-| `logo-original.jpg` | Arte original enviada pelo cliente |
+| `logo-original-novo.png` | Logo atual enviado pelo cliente (outubro de 2026) |
+| `logo-original.jpg` | Logo antigo, guardado como referência |
 | `logo-horizontal.png` | Versão branca (símbolo + "CONECTA"), usada no rodapé |
-| `logo-horizontal-azul.png` | Versão azul, usada no cabeçalho branco |
-| `logo-vertical.png` | Destaque na página inicial |
-| `favicon.png` | Ícone da aba do navegador |
+| `logo-horizontal-azul.png` | Versão azul (símbolo + "CONECTA"), usada no cabeçalho |
+| `logo-completo.png` | Versão branca completa, com "GESTÃO CONTÁBIL" ao lado do símbolo |
+| `logo-vertical.png` | Símbolo em cima e o nome embaixo, usada no topo da página inicial e nas perguntas frequentes |
+| `favicon.png` | Ícone da aba do navegador e do balão do WhatsApp |
 | `circuito.svg` | Padrão de circuito em vetor (nítido em qualquer tela), usado na faixa da página inicial e nas perguntas frequentes |
 | `fundo-circuito.jpg` | Recorte do circuito do logo original (não usado mais, fica como referência) |
 
-Se o cliente tiver o logo em vetor (SVG, AI ou PDF), vale substituir os PNGs para ter mais nitidez.
+O logo novo chegou em uma imagem pequena (296x96 pixels), então os PNGs foram ampliados a partir dela. Se o cliente tiver o logo em vetor (SVG, AI ou PDF) ou em alta resolução, vale substituir os PNGs para ter mais nitidez.
 
 ## Animações
 
