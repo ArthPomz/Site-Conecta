@@ -32,6 +32,24 @@ Inspirado no visual de sites de contabilidade digital (referência dada pelo cli
 - Seções: serviços, como funciona, comparativo, perguntas frequentes e faixa de chamada.
 - Rodapé azul-escuro com colunas de links.
 
+## Modo noturno
+
+O botão com a lua, no cabeçalho, troca para o modo noturno, e o sol volta para o claro. A escolha fica salva no navegador. Na primeira visita, o site segue o tema do aparelho.
+
+As cores do modo escuro ficam no bloco `[data-tema="escuro"]` em `assets/css/style.css`:
+
+| Uso | Cor |
+| --- | --- |
+| Fundo | `#0E1A2B` |
+| Fundo alternativo | `#13233A` |
+| Cartões e caixas | `#172A44` |
+| Texto | `#E6EDF5` |
+| Texto suave | `#A9B8CA` |
+| Destaque (links e palavras dos títulos) | `#6BB2EC` |
+| Rodapé | `#08121F` |
+
+O azul do logo, o azul vibrante dos botões e o painel de circuito continuam iguais nos dois modos. No escuro, o logo do cabeçalho fica branco.
+
 ## Tipografia
 
 - Fonte: [Inter](https://fonts.google.com/specimen/Inter) (Google Fonts).
