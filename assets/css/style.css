@@ -232,6 +232,13 @@ img { max-width: 100%; display: block; }
 .chamada .titulo { color: #fff; }
 .chamada .botoes { justify-content: center; }
 .chamada p { color: var(--cor-destaque-clara); margin-bottom: 32px; font-size: 1.1rem; }
+.chamada-instagram {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 28px;
+  color: #fff; font-weight: 600; text-decoration: none; opacity: 0.9;
+}
+.chamada-instagram:hover { opacity: 1; text-decoration: underline; }
+.chamada-instagram svg, .rodape-instagram svg { width: 20px; height: 20px; flex: none; }
+.rodape-instagram { display: inline-flex; align-items: center; gap: 8px; }
 
 /* Contato */
 .contato-grade { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
