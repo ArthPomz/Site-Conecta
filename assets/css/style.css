@@ -118,7 +118,7 @@ img { max-width: 100%; display: block; }
 .hero .botao-contorno, [data-tema="escuro"] .hero .botao-contorno { border-color: #fff; color: #fff; }
 .hero .botao-contorno:hover { background: rgba(255, 255, 255, 0.12); }
 .hero-painel { display: flex; align-items: center; justify-content: center; padding: 48px 24px; }
-.hero-painel img { width: 140px; height: auto; filter: drop-shadow(0 8px 24px rgba(10, 25, 45, 0.45)); }
+.hero-painel img { width: 210px; height: auto; filter: drop-shadow(0 8px 24px rgba(10, 25, 45, 0.45)); }
 
 /* Seções */
 .secao { padding: 96px 0; }
@@ -332,7 +332,7 @@ img { max-width: 100%; display: block; }
   .menu .botao { margin: 8px 24px 0; }
   .secao { padding: 64px 0; }
   .botao { width: 100%; }
-  .hero-painel img { width: 110px; }
+  .hero-painel img { width: 150px; }
   .tabela th, .tabela td { padding: 12px 8px; font-size: 0.9rem; }
   .chamada { padding: 48px 24px; }
   .rodape-grade { grid-template-columns: 1fr; }
