@@ -93,4 +93,4 @@ O texto da mensagem pronta e o número ficam em `assets/js/main.js`, na parte "B
 
 ## Instagram
 
-O link para o Instagram aparece no rodapé de todas as páginas, na página de contato e na faixa "Vamos conversar" da página inicial. Enquanto não temos o usuário da Conecta, o endereço usa o marcador `INSTAGRAM_DA_CONECTA`. Para trocar, procure esse texto nos arquivos `.html` e substitua pelo usuário (sem o @).
+O link para o Instagram aparece no rodapé de todas as páginas, na página de contato e na faixa "Vamos conversar" da página inicial. O perfil é [@conectacontabilfundao](https://www.instagram.com/conectacontabilfundao/). Se o usuário mudar, procure `conectacontabilfundao` nos arquivos `.html` e troque.
