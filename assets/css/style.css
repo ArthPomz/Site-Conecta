@@ -205,7 +205,7 @@ img { max-width: 100%; display: block; }
     linear-gradient(200deg, rgba(47, 90, 140, 0.55), rgba(27, 53, 87, 0.95)),
     url("../img/circuito.svg") center / cover;
 }
-.faq-painel img { width: 200px; }
+.faq-painel img { width: 200px; height: auto; }
 .faq-caixa {
   background: var(--cor-superficie); border-radius: var(--raio); box-shadow: 0 12px 40px rgba(27, 53, 87, 0.14);
   padding: 40px; margin-left: -48px; position: relative;
