@@ -128,11 +128,13 @@ img { max-width: 100%; display: block; }
 /* Topo das páginas internas */
 .topo { padding: 80px 0 48px; background: var(--cor-fundo-alt); }
 .topo .titulo { font-size: clamp(2rem, 4vw, 3rem); }
-.topo-texto { padding-bottom: 80px; }
+.topo-texto { padding-bottom: 56px; }
 .topo .texto { margin-top: 24px; }
 
 /* Cartões de serviço */
 .cartoes { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.cartoes.duas-colunas { grid-template-columns: repeat(2, 1fr); }
+.topo-texto + .secao { padding-top: 56px; }
 .cartao {
   display: flex; flex-direction: column; gap: 12px;
   padding: 32px; border-radius: var(--raio);
@@ -337,6 +339,7 @@ img { max-width: 100%; display: block; }
   .chamada { padding: 48px 24px; }
   .rodape-grade { grid-template-columns: 1fr; }
   .carrossel-trilho .cartao { flex-basis: 85%; }
+  .cartoes.duas-colunas { grid-template-columns: 1fr; }
   .carrossel-seta { width: 40px; height: 40px; font-size: 1.6rem; }
   .carrossel-seta.anterior { left: -8px; }
   .carrossel-seta.proximo { right: -8px; }
