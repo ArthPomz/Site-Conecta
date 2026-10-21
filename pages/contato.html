@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-tema="escuro">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contato | Conecta Gestão Contábil</title>
   <meta name="description" content="Entre em contato com a Conecta por WhatsApp, e-mail ou visite nosso escritório em Fundão (ES).">
   <script>
-    // Aplica o tema salvo (ou o do sistema) antes de desenhar a página
+    // O site abre no modo escuro, a não ser que a pessoa tenha escolhido o claro
     try {
       var tema = localStorage.getItem("tema");
-      if (!tema) tema = matchMedia("(prefers-color-scheme: dark)").matches ? "escuro" : "claro";
-      document.documentElement.dataset.tema = tema;
+      if (tema) document.documentElement.dataset.tema = tema;
     } catch (e) {}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">

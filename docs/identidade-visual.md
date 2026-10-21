@@ -34,7 +34,7 @@ Inspirado no visual de sites de contabilidade digital (referência dada pelo cli
 
 ## Modo noturno
 
-O botão com a lua, no cabeçalho, troca para o modo noturno, e o sol volta para o claro. A escolha fica salva no navegador. Na primeira visita, o site segue o tema do aparelho.
+O site abre no modo noturno por padrão. O botão com o sol, no cabeçalho, troca para o modo claro, e a lua volta para o escuro. A escolha fica salva no navegador.
 
 As cores do modo escuro ficam no bloco `[data-tema="escuro"]` em `assets/css/style.css`:
 

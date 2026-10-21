@@ -43,7 +43,7 @@ if (temaBotao) {
     document.documentElement.dataset.tema = tema;
     temaBotao.setAttribute("aria-label", tema === "escuro" ? "Ativar modo claro" : "Ativar modo noturno");
   };
-  aplicarTema(document.documentElement.dataset.tema || "claro");
+  aplicarTema(document.documentElement.dataset.tema || "escuro");
   temaBotao.addEventListener("click", () => {
     const novo = document.documentElement.dataset.tema === "escuro" ? "claro" : "escuro";
     aplicarTema(novo);
