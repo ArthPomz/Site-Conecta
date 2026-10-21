@@ -10,7 +10,7 @@ Apresentar a Conecta, seus serviços contábeis e facilitar o contato de potenci
 | --- | --- |
 | Início | Apresentação curta, resumo dos serviços e chamada para contato |
 | Serviços | Lista completa dos serviços (ver [servicos.md](servicos.md)) |
-| Quem somos | História, equipe e valores da Conecta |
+| O que é a Conecta | História, equipe e valores da Conecta |
 | Contato | Telefone, WhatsApp, e-mail, endereço e mapa |
 
 ## Requisitos funcionais

@@ -79,7 +79,7 @@ img { max-width: 100%; display: block; }
 }
 .logo img { height: 40px; width: auto; }
 .menu { display: flex; align-items: center; gap: 32px; list-style: none; }
-.menu a { color: var(--cor-principal-escura); text-decoration: none; font-weight: 500; }
+.menu a { color: var(--cor-principal-escura); text-decoration: none; font-weight: 500; white-space: nowrap; }
 .menu a:hover, .menu a[aria-current="page"] { color: var(--cor-destaque); }
 .menu .botao { min-width: 0; padding: 10px 24px; }
 .cabecalho nav { display: flex; align-items: center; gap: 16px; }
@@ -309,6 +309,19 @@ img { max-width: 100%; display: block; }
 [data-tema="escuro"] .tema-botao .lua { display: none; }
 [data-tema="escuro"] .tema-botao .sol { display: block; }
 
+/* Menu recolhido (☰) em telas até 1024px */
+@media (max-width: 1024px) {
+  .menu-botao { display: block; }
+  .menu {
+    display: none; position: absolute; top: 72px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--cor-fundo); border-bottom: 1px solid var(--cor-borda); padding: 8px 0 16px;
+  }
+  .menu.aberto { display: flex; }
+  .menu a { display: block; padding: 12px 24px; }
+  .menu .botao { margin: 8px 24px 0; width: auto; text-align: center; }
+}
+
 /* Tablet */
 @media (max-width: 960px) {
   .hero, .comparativo, .faq, .contato-grade { grid-template-columns: 1fr; }
@@ -323,15 +336,6 @@ img { max-width: 100%; display: block; }
 
 /* Celular */
 @media (max-width: 720px) {
-  .menu-botao { display: block; }
-  .menu {
-    display: none; position: absolute; top: 72px; left: 0; right: 0;
-    flex-direction: column; align-items: stretch; gap: 0;
-    background: var(--cor-fundo); border-bottom: 1px solid var(--cor-borda); padding: 8px 0 16px;
-  }
-  .menu.aberto { display: flex; }
-  .menu a { display: block; padding: 12px 24px; }
-  .menu .botao { margin: 8px 24px 0; width: auto; text-align: center; }
   .secao { padding: 64px 0; }
   .botao { width: 100%; }
   .hero-painel img { width: 150px; }
