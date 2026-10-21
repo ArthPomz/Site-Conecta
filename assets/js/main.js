@@ -12,3 +12,26 @@ if (botao && menu) {
 // Ano atual no rodapé
 const ano = document.querySelector("#ano");
 if (ano) ano.textContent = new Date().getFullYear();
+
+// Carrossel de serviços: as setas passam um cartão por vez
+document.querySelectorAll(".carrossel").forEach((carrossel) => {
+  const trilho = carrossel.querySelector(".carrossel-trilho");
+  const anterior = carrossel.querySelector(".anterior");
+  const proximo = carrossel.querySelector(".proximo");
+
+  const passo = () => {
+    const cartao = trilho.querySelector(".cartao");
+    return cartao ? cartao.offsetWidth + 24 : trilho.clientWidth;
+  };
+
+  const atualizarSetas = () => {
+    anterior.disabled = trilho.scrollLeft <= 8;
+    proximo.disabled = trilho.scrollLeft + trilho.clientWidth >= trilho.scrollWidth - 8;
+  };
+
+  anterior.addEventListener("click", () => trilho.scrollBy({ left: -passo() }));
+  proximo.addEventListener("click", () => trilho.scrollBy({ left: passo() }));
+  trilho.addEventListener("scroll", atualizarSetas, { passive: true });
+  window.addEventListener("resize", atualizarSetas);
+  atualizarSetas();
+});

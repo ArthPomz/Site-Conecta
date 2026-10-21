@@ -132,6 +132,26 @@ img { max-width: 100%; display: block; }
 .cartao .link::after { content: " ›"; }
 .icone { width: 32px; height: 32px; flex-shrink: 0; color: var(--cor-principal); }
 
+/* Carrossel de serviços: uma linha, passando com as setas */
+.carrossel { position: relative; }
+.carrossel .carrossel-trilho {
+  display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory;
+  scroll-behavior: smooth; scrollbar-width: none; padding: 4px 2px;
+}
+.carrossel-trilho::-webkit-scrollbar { display: none; }
+.carrossel-trilho .cartao { flex: 0 0 calc((100% - 48px) / 3); scroll-snap-align: start; }
+.carrossel-seta {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 48px; height: 48px; border-radius: 50%; border: 0; cursor: pointer;
+  background: #fff; color: var(--cor-principal); font-size: 2rem; line-height: 1;
+  box-shadow: 0 4px 16px rgba(27, 53, 87, 0.2);
+  display: flex; align-items: center; justify-content: center; padding-bottom: 4px;
+}
+.carrossel-seta:hover { background: var(--cor-principal); color: #fff; }
+.carrossel-seta:disabled { opacity: 0; pointer-events: none; }
+.carrossel-seta.anterior { left: -24px; }
+.carrossel-seta.proximo { right: -24px; }
+
 /* Passos */
 .passos { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); counter-reset: passo; }
 .passo {
@@ -237,6 +257,7 @@ img { max-width: 100%; display: block; }
   .faq-painel { display: none; }
   .faq-caixa { margin: 0; padding: 28px; }
   .rodape-grade { grid-template-columns: 1fr 1fr; }
+  .carrossel-trilho .cartao { flex-basis: calc((100% - 24px) / 2); }
 }
 
 /* Celular */
@@ -259,4 +280,8 @@ img { max-width: 100%; display: block; }
   .tabela th, .tabela td { padding: 12px 8px; font-size: 0.9rem; }
   .chamada { padding: 48px 24px; }
   .rodape-grade { grid-template-columns: 1fr; }
+  .carrossel-trilho .cartao { flex-basis: 85%; }
+  .carrossel-seta { width: 40px; height: 40px; font-size: 1.6rem; }
+  .carrossel-seta.anterior { left: -8px; }
+  .carrossel-seta.proximo { right: -8px; }
 }
