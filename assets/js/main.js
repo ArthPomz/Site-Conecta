@@ -114,7 +114,19 @@ if (whatsapp) {
     </form>`;
   document.body.appendChild(balao);
 
-  const abrir = () => { balao.classList.add("aberto"); whatsapp.setAttribute("aria-expanded", "true"); };
+  // A caixa de texto cresce sozinha conforme a pessoa escreve
+  const caixa = balao.querySelector("textarea");
+  const ajustarAltura = () => {
+    caixa.style.height = "auto";
+    caixa.style.height = `${caixa.scrollHeight}px`;
+  };
+  caixa.addEventListener("input", ajustarAltura);
+
+  const abrir = () => {
+    balao.classList.add("aberto");
+    whatsapp.setAttribute("aria-expanded", "true");
+    ajustarAltura();
+  };
   const fechar = () => { balao.classList.remove("aberto"); whatsapp.setAttribute("aria-expanded", "false"); };
   let fechadoPelaPessoa = false;
 
