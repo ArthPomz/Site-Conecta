@@ -240,3 +240,13 @@ if (!poucoMovimento) {
     }).catch(() => {});
   }
 }
+
+// Perguntas frequentes: ao abrir uma resposta, a que estava aberta fecha
+// (os navegadores novos já fazem isso pelo name="perguntas"; aqui fica para os antigos)
+const perguntas = document.querySelectorAll(".faq details");
+perguntas.forEach((pergunta) => {
+  pergunta.addEventListener("toggle", () => {
+    if (!pergunta.open) return;
+    perguntas.forEach((outra) => { if (outra !== pergunta) outra.open = false; });
+  });
+});
