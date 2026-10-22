@@ -121,15 +121,16 @@ img { max-width: 100%; display: block; }
 }
 .hero {
   display: grid; grid-template-columns: 2fr 1fr; align-items: center;
-  min-height: min(76svh, 720px);
-  padding: 72px max(var(--margem), calc((100vw - var(--largura)) / 2 + var(--margem)));
+  min-height: min(54svh, 500px);
+  padding: 56px max(var(--margem), calc((100vw - var(--largura)) / 2 + var(--margem)));
   gap: 48px;
 }
 .hero h1 { font-size: var(--t-gigante); color: #fff; margin-bottom: 32px; }
 .hero-texto > p { font-size: var(--t-destaque); line-height: 1.4; max-width: 520px; margin-bottom: 40px; }
 .hero .botao-contorno { color: #fff; }
 .hero-painel { display: flex; justify-content: flex-end; }
-.hero-painel img { width: min(340px, 100%); height: auto; }
+.hero-painel img { width: min(260px, 100%); height: auto; }
+.hero + .secao { padding-top: 96px; }
 
 /* Seções */
 .secao { padding: 128px 0; }
@@ -353,7 +354,13 @@ img { max-width: 100%; display: block; }
   .instagram-perfil strong { font-size: var(--t-texto); }
   .hero-texto > p { font-size: var(--t-texto); }
   .botao { width: 100%; }
-  .hero-painel img { width: 170px; }
+  .hero { padding-top: 40px; padding-bottom: 48px; gap: 28px; }
+  .hero-painel img { width: 120px; }
+  .hero h1 { margin-bottom: 20px; }
+  .hero-texto > p { margin-bottom: 28px; }
+  .hero .botoes { flex-wrap: nowrap; gap: 12px; }
+  .hero .botao { min-width: 0; padding: 14px 12px; flex: 1; font-size: 1rem; white-space: nowrap; }
+  .hero + .secao { padding-top: 56px; }
   .tabela th, .tabela td { padding: 14px 12px; font-size: 1rem; }
   .tabela th { font-size: var(--t-texto); }
   .rodape-grade { grid-template-columns: 1fr; }
