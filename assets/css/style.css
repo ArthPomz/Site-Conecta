@@ -130,14 +130,14 @@ img { max-width: 100%; display: block; }
 .hero .botao-contorno { color: #fff; }
 .hero-painel { display: flex; justify-content: flex-end; }
 .hero-painel img { width: min(260px, 100%); height: auto; }
-.hero + .secao { padding-top: 96px; }
+.hero + .secao { padding-top: 64px; }
 
 /* Seções */
-.secao { padding: 128px 0; }
+.secao { padding: 96px 0; }
 .secao-alt { background: var(--superficie); }
 .secao-cabeca {
   display: grid; grid-template-columns: 8fr 4fr; gap: 24px 64px; align-items: end;
-  margin-bottom: 56px;
+  margin-bottom: 40px;
 }
 .secao-cabeca .titulo { margin-bottom: 0; }
 
@@ -240,7 +240,7 @@ img { max-width: 100%; display: block; }
 .instagram-ver svg { width: 20px; height: 20px; }
 
 /* Faixa de chamada: o único bloco inteiro na cor de destaque */
-.chamada { background: var(--ciano); color: var(--noite); padding: 128px 0; }
+.chamada { background: var(--ciano); color: var(--noite); padding: 96px 0; }
 .chamada .container { display: grid; grid-template-columns: 7fr 5fr; gap: 48px; align-items: end; }
 .chamada .titulo { color: var(--noite); font-size: var(--t-gigante); margin-bottom: 24px; }
 .chamada p { font-size: var(--t-destaque); line-height: 1.4; max-width: 520px; }
@@ -346,7 +346,7 @@ img { max-width: 100%; display: block; }
 
 /* Celular */
 @media (max-width: 720px) {
-  .secao, .chamada { padding: 80px 0; }
+  .secao, .chamada { padding: 64px 0; }
   .faixa { padding: 64px 0; }
   .topo { padding: 72px 0 64px; }
   .topo .titulo { font-size: clamp(2.1rem, 1rem + 5vw, 2.6rem); }
@@ -360,7 +360,7 @@ img { max-width: 100%; display: block; }
   .hero-texto > p { margin-bottom: 28px; }
   .hero .botoes { flex-wrap: nowrap; gap: 12px; }
   .hero .botao { min-width: 0; padding: 14px 12px; flex: 1; font-size: 1rem; white-space: nowrap; }
-  .hero + .secao { padding-top: 56px; }
+  .hero + .secao { padding-top: 40px; }
   .tabela th, .tabela td { padding: 14px 12px; font-size: 1rem; }
   .tabela th { font-size: var(--t-texto); }
   .rodape-grade { grid-template-columns: 1fr; }
