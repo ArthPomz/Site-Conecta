@@ -147,3 +147,6 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Arquivos de trabalho da skill design-taste-frontend
+.taste-skill/

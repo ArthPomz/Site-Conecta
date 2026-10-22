@@ -21,7 +21,7 @@ document.querySelectorAll(".carrossel").forEach((carrossel) => {
 
   const passo = () => {
     const cartao = trilho.querySelector(".cartao");
-    return cartao ? cartao.offsetWidth + 24 : trilho.clientWidth;
+    return cartao ? cartao.offsetWidth + 8 : trilho.clientWidth;
   };
 
   const atualizarSetas = () => {
@@ -53,7 +53,7 @@ if (temaBotao) {
 
 // Animações: os blocos surgem suavemente quando aparecem na tela
 const alvos = document.querySelectorAll(
-  ".secao-cabeca, .carrossel, :not(.carrossel-trilho) > .cartao, .passo, .tabela, .faq-painel, .faq-caixa, .chamada, .instagram-texto, .instagram-feed, .contato-item, .mapa, .topo .titulo, .topo .subtitulo, .topo .texto"
+  ".secao-cabeca > *, .carrossel, .passos li, .comparativo > *, .faq-intro, .faq-lista, .instagram-texto, .instagram-feed, .chamada .container > *, .contato-item, .mapa, .faixa .container > *"
 );
 const poucoMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 if ("IntersectionObserver" in window && !poucoMovimento) {
@@ -74,7 +74,7 @@ if ("IntersectionObserver" in window && !poucoMovimento) {
   }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
   alvos.forEach((alvo) => {
     // Itens lado a lado aparecem um depois do outro
-    const irmaos = [...alvo.parentElement.children].filter((el) => el.matches(".cartao, .passo, .contato-item"));
+    const irmaos = [...alvo.parentElement.children].filter((el) => el.matches(".secao-cabeca > *, .passos li, .comparativo > *, .faq > *, .instagram > *, .chamada .container > *, .contato-item, .faixa .container > *"));
     const posicao = irmaos.indexOf(alvo);
     if (posicao > 0) alvo.style.setProperty("--atraso", `${Math.min(posicao, 3) * 0.12}s`);
     alvo.classList.add("revelar");
