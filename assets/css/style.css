@@ -131,7 +131,7 @@ img { max-width: 100%; display: block; }
 .hero-painel { display: flex; flex-direction: column; align-items: center; gap: 32px; }
 .hero-painel .vencimento { text-align: center; align-items: center; }
 .hero-painel img { width: min(260px, 100%); height: auto; }
-.hero + .secao { padding-top: 64px; }
+.hero + .secao { padding-top: 64px; padding-bottom: 72px; }
 
 /* Próximo vencimento do DAS, calculado pelo main.js a partir da data de hoje */
 .vencimento {
@@ -173,7 +173,7 @@ img { max-width: 100%; display: block; }
 .cartao {
   flex: 0 0 calc((100% - 16px) / 3); scroll-snap-align: start;
   display: flex; flex-direction: column; gap: 16px;
-  padding: 40px 32px 32px; min-height: 420px;
+  padding: 32px 32px 28px; min-height: 0;
   background: var(--superficie); color: var(--texto); text-decoration: none;
   transition: background-color 0.2s ease;
 }
@@ -383,7 +383,7 @@ img { max-width: 100%; display: block; }
   .hero-texto > p { margin-bottom: 28px; }
   .hero .botoes { flex-wrap: nowrap; gap: 12px; }
   .hero .botao { min-width: 0; padding: 14px 12px; flex: 1; font-size: 1rem; white-space: nowrap; }
-  .hero + .secao { padding-top: 40px; }
+  .hero + .secao { padding-top: 40px; padding-bottom: 48px; }
   .tabela th, .tabela td { padding: 14px 12px; font-size: 1rem; }
   .tabela th { font-size: var(--t-texto); }
   .rodape-grade { grid-template-columns: 1fr; }
