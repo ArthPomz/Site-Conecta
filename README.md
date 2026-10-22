@@ -28,7 +28,7 @@ Site-Conecta/
 ├── index.html            # página inicial
 ├── pages/
 │   ├── servicos.html     # lista completa de serviços
-│   ├── sobre.html        # sobre a Conecta
+│   ├── sobre.html        # página "O que é a Conecta"
 │   └── contato.html      # telefone, e-mail, endereço e mapa
 ├── assets/
 │   ├── css/style.css     # estilos do site

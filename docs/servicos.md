@@ -69,7 +69,7 @@ Conteúdo tirado do documento *Relação de Serviços - Conecta* enviado pelo cl
 - **Assessoria Fiscal/Tributária:** Analisamos o melhor regime tributário, para a sua empresa ter a maior eficiência tributária possível; calculamos e emitimos as guias de pagamento dos seus tributos; planejamos juntamente com a empresa.
 - **BPO Financeiro:** Deixe a gestão das finanças conosco para que você possa ganhar tempo, aumentar a eficiência e ao mesmo tempo diminuindo custos administrativos do seu negócio.
 - **Departamento Pessoal:** Atendimento personalizado e tecnologicamente avançado para todos os seus serviços de departamento de pessoal. Todas as informações e movimentação do seu departamento pessoal são enviadas para nós de forma eletrônica, sem complicação e de forma segura.
-- **Produtor Rural Pessoa Física e Pessoa Jurídica:** análise de melhor forma de tributação conforme cada caso, acompanhamento mensal do resultado da atividade rural, elaboração de livro caixa da atividade rural, LCDPR, ITR, CCIR, regularização de documentos do seu imóvel rural, gestão patrimonial.
+- **Produtor Rural Pessoa Física e Pessoa Jurídica:** Análise da melhor forma de tributação conforme cada caso, acompanhamento mensal do resultado da atividade rural, elaboração de livro caixa da atividade rural, LCDPR, ITR, CCIR, regularização de documentos do seu imóvel rural, gestão patrimonial.
 
 ## Contato
 
