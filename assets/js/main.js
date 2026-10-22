@@ -241,12 +241,36 @@ if (!poucoMovimento) {
   }
 }
 
-// Perguntas frequentes: ao abrir uma resposta, a que estava aberta fecha
-// (os navegadores novos já fazem isso pelo name="perguntas"; aqui fica para os antigos)
-const perguntas = document.querySelectorAll(".faq details");
+// Perguntas frequentes: só uma resposta aberta por vez, e ela desce ao abrir
+// e sobe ao fechar
+const perguntas = [...document.querySelectorAll(".faq details")];
+const animarPergunta = (pergunta, abrir) => {
+  const resumo = pergunta.querySelector("summary");
+  if (pergunta._animacao) pergunta._animacao.cancel();
+  if (poucoMovimento) { pergunta.open = abrir; return; }
+  const inicio = pergunta.offsetHeight;
+  if (abrir) pergunta.open = true;
+  const fim = abrir ? pergunta.scrollHeight : resumo.offsetHeight;
+  pergunta.style.overflow = "hidden";
+  const animacao = pergunta.animate(
+    [{ height: `${inicio}px` }, { height: `${fim}px` }],
+    { duration: 300, easing: "cubic-bezier(0.2, 0.7, 0.2, 1)" }
+  );
+  pergunta._animacao = animacao;
+  animacao.onfinish = () => {
+    if (!abrir) pergunta.open = false;
+    pergunta.style.overflow = "";
+    pergunta._animacao = null;
+  };
+};
 perguntas.forEach((pergunta) => {
-  pergunta.addEventListener("toggle", () => {
-    if (!pergunta.open) return;
-    perguntas.forEach((outra) => { if (outra !== pergunta) outra.open = false; });
+  pergunta.querySelector("summary").addEventListener("click", (e) => {
+    e.preventDefault();
+    const abrir = !pergunta.open || pergunta._animacao?.fechando;
+    if (abrir) {
+      perguntas.forEach((outra) => { if (outra !== pergunta && outra.open) animarPergunta(outra, false); });
+    }
+    animarPergunta(pergunta, abrir);
+    if (pergunta._animacao) pergunta._animacao.fechando = !abrir;
   });
 });
