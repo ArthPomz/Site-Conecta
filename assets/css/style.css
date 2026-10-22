@@ -125,7 +125,7 @@ img { max-width: 100%; display: block; }
   padding: 56px max(var(--margem), calc((100vw - var(--largura)) / 2 + var(--margem)));
   gap: 48px;
 }
-.hero h1 { font-size: var(--t-gigante); color: #fff; margin-bottom: 32px; }
+.hero h1 { font-size: var(--t-titulo); color: #fff; margin-bottom: 28px; max-width: 18ch; }
 .hero-texto > p { font-size: var(--t-destaque); line-height: 1.4; max-width: 520px; margin-bottom: 40px; }
 .hero .botao-contorno { color: #fff; }
 .hero-painel { display: flex; justify-content: flex-end; }
