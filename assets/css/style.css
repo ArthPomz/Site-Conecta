@@ -181,7 +181,7 @@ img { max-width: 100%; display: block; }
 
 /* Como funciona: três faixas lado a lado, do azul mais escuro ao mais claro */
 .passos { display: grid; grid-template-columns: repeat(3, 1fr); list-style: none; }
-.passos li { padding: 48px 40px; min-height: 320px; color: #fff; display: flex; flex-direction: column; gap: 16px; }
+.passos li { padding: 36px 32px 40px; min-height: 0; color: #fff; display: flex; flex-direction: column; gap: 16px; }
 .passos li:nth-child(1) { background: var(--azul-escuro); }
 .passos li:nth-child(2) { background: var(--azul); }
 .passos li:nth-child(3) { background: var(--azul-medio); }
@@ -366,7 +366,7 @@ img { max-width: 100%; display: block; }
   .rodape-grade { grid-template-columns: 1fr; }
   .cartao { flex-basis: 85%; min-height: 0; }
   .faixa ul { grid-template-columns: 1fr; }
-  .passos li { padding: 36px 28px; }
+  .passos li { padding: 28px 24px; }
   .instagram-perfil { min-height: 280px; padding: 32px; }
   .chamada .botoes { flex-direction: column; }
 }
