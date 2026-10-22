@@ -128,9 +128,23 @@ img { max-width: 100%; display: block; }
 .hero h1 { font-size: var(--t-titulo); color: #fff; margin-bottom: 28px; max-width: 18ch; }
 .hero-texto > p { font-size: var(--t-destaque); line-height: 1.4; max-width: 520px; margin-bottom: 40px; }
 .hero .botao-contorno { color: #fff; }
-.hero-painel { display: flex; justify-content: flex-end; }
+.hero-painel { display: flex; flex-direction: column; align-items: flex-end; gap: 32px; }
 .hero-painel img { width: min(260px, 100%); height: auto; }
 .hero + .secao { padding-top: 64px; }
+
+/* Próximo vencimento do DAS, calculado pelo main.js a partir da data de hoje */
+.vencimento {
+  display: flex; flex-direction: column; gap: 2px; min-width: 260px;
+  padding: 20px 24px; background: var(--azul-escuro); color: #fff;
+}
+.vencimento-rotulo { font-size: var(--t-pequeno); color: var(--texto-azul-suave); }
+.vencimento-data { font-family: var(--fonte-titulo); font-size: var(--t-destaque); letter-spacing: -0.01em; line-height: 1.2; }
+.vencimento-falta { color: var(--ciano); font-weight: 600; }
+
+/* Sinais de luz que correm pelas linhas do circuito (desenhados pelo main.js) */
+.hero, .topo { position: relative; isolation: isolate; overflow: hidden; }
+.circuito-vivo { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.circuito-vivo path { fill: none; stroke: #9BE3FF; stroke-width: 4; stroke-linecap: round; }
 
 /* Seções */
 .secao { padding: 96px 0; }
@@ -180,7 +194,11 @@ img { max-width: 100%; display: block; }
 .carrossel-seta:disabled { opacity: 0.35; pointer-events: none; }
 
 /* Como funciona: três faixas lado a lado, do azul mais escuro ao mais claro */
-.passos { display: grid; grid-template-columns: repeat(3, 1fr); list-style: none; }
+.passos { display: grid; grid-template-columns: repeat(3, 1fr); list-style: none; position: relative; }
+.passos::before {
+  content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 4px; z-index: 1;
+  background: var(--ciano); transform-origin: left;
+}
 .passos li { padding: 36px 32px 40px; min-height: 0; color: #fff; display: flex; flex-direction: column; gap: 16px; }
 .passos li:nth-child(1) { background: var(--azul-escuro); }
 .passos li:nth-child(2) { background: var(--azul); }
@@ -332,7 +350,9 @@ img { max-width: 100%; display: block; }
   .hero, .comparativo, .faq, .contato-grade, .instagram, .secao-cabeca,
   .chamada .container, .faixa .container { grid-template-columns: 1fr; }
   .hero { padding-top: 48px; padding-bottom: 64px; gap: 40px; min-height: 0; }
-  .hero-painel { order: -1; justify-content: flex-start; }
+  .hero-painel { display: contents; }
+  .hero-painel img { order: -1; }
+  .vencimento { order: 1; justify-self: start; }
   .hero-painel img { width: 220px; }
   .faq, .comparativo, .instagram, .contato-grade { gap: 40px; }
   .faixa .container { gap: 24px; }
@@ -356,6 +376,7 @@ img { max-width: 100%; display: block; }
   .botao { width: 100%; }
   .hero { padding-top: 40px; padding-bottom: 48px; gap: 28px; }
   .hero-painel img { width: 120px; }
+  .vencimento { min-width: 0; padding: 16px 20px; }
   .hero h1 { margin-bottom: 20px; }
   .hero-texto > p { margin-bottom: 28px; }
   .hero .botoes { flex-wrap: nowrap; gap: 12px; }
@@ -393,15 +414,18 @@ body, .cabecalho, .rodape, .secao-alt, .faixa, .cartao, .faq details, .contato-i
 
   /* Entrada do topo da página inicial */
   @keyframes surgir { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
-  @keyframes deslizar { from { background-position: center 0; } to { background-position: center 100%; } }
   .hero-texto > * { animation: surgir 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  /* O título da página inicial surge palavra por palavra */
+  .hero h1 .palavra { display: inline-block; animation: surgir 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(var(--i) * 60ms); }
+  .hero h1:has(.palavra) { animation: none; }
+  /* A barra azul-clara de "Como funciona" se preenche quando a seção aparece */
+  .animar .passos::before { transform: scaleX(0); transition: transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.3s; }
+  .animar .passos.acesa::before { transform: scaleX(1); }
   .hero-texto > :nth-child(2) { animation-delay: 0.08s; }
   .hero-texto > :nth-child(3) { animation-delay: 0.16s; }
   .hero-painel { animation: surgir 1s 0.24s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
   .topo .container > * { animation: surgir 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
   .topo .container > :nth-child(2) { animation-delay: 0.08s; }
-  /* O circuito do fundo corre devagar, como um sinal passando pelos fios */
-  .hero, .topo { animation: deslizar 40s linear infinite alternate; }
 }
 
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
