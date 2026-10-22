@@ -128,7 +128,8 @@ img { max-width: 100%; display: block; }
 .hero h1 { font-size: var(--t-titulo); color: #fff; margin-bottom: 28px; max-width: 18ch; }
 .hero-texto > p { font-size: var(--t-destaque); line-height: 1.4; max-width: 520px; margin-bottom: 40px; }
 .hero .botao-contorno { color: #fff; }
-.hero-painel { display: flex; flex-direction: column; align-items: flex-end; gap: 32px; }
+.hero-painel { display: flex; flex-direction: column; align-items: center; gap: 32px; }
+.hero-painel .vencimento { text-align: center; align-items: center; }
 .hero-painel img { width: min(260px, 100%); height: auto; }
 .hero + .secao { padding-top: 64px; }
 
@@ -353,6 +354,7 @@ img { max-width: 100%; display: block; }
   .hero-painel { display: contents; }
   .hero-painel img { order: -1; }
   .vencimento { order: 1; justify-self: start; }
+  .hero-painel .vencimento { text-align: left; align-items: flex-start; }
   .hero-painel img { width: 220px; }
   .faq, .comparativo, .instagram, .contato-grade { gap: 40px; }
   .faixa .container { gap: 24px; }
