@@ -199,13 +199,43 @@ if (vencimento) {
   const itens = [...lista.children].map((item) => ({ item, data: proximo(regras[item.dataset.prazo]) }));
   itens.sort((x, y) => x.data - y.data).forEach(({ item, data }) => {
     const faltam = Math.round((data - hoje) / 86400000);
-    item.querySelector(".prazo-data").textContent = data
-      .toLocaleDateString("pt-BR", { day: "numeric", month: "short" })
-      .replace(" de ", " ").replace(".", "");
+    item.querySelector(".prazo-data").textContent =
+      data.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" });
     item.querySelector(".prazo-falta").textContent =
-      faltam === 0 ? "hoje" : faltam === 1 ? "1 dia" : `${faltam} dias`;
+      faltam === 0 ? "Vence hoje" : faltam === 1 ? "Falta 1 dia" : `Faltam ${faltam} dias`;
     lista.append(item);
   });
+
+  // Um prazo por vez: troca sozinho a cada 4 segundos, para quando o mouse
+  // está em cima e as bolinhas deixam escolher qual ver
+  const telas = [...lista.children];
+  const bolinhas = document.createElement("div");
+  bolinhas.className = "prazos-bolinhas";
+  telas.forEach((tela, i) => {
+    const bolinha = document.createElement("button");
+    bolinha.type = "button";
+    bolinha.setAttribute("aria-label", `Ver ${tela.querySelector(".prazo-nome").textContent}`);
+    bolinha.addEventListener("click", () => mostrar(i));
+    bolinhas.append(bolinha);
+  });
+  vencimento.append(bolinhas);
+  vencimento.classList.add("rodando");
+  let atual = 0;
+  const mostrar = (i) => {
+    atual = i;
+    telas.forEach((tela, n) => {
+      tela.classList.toggle("ativa", n === i);
+      tela.setAttribute("aria-hidden", n !== i);
+      bolinhas.children[n].setAttribute("aria-current", n === i);
+    });
+  };
+  mostrar(0);
+  let parado = false;
+  vencimento.addEventListener("mouseenter", () => { parado = true; });
+  vencimento.addEventListener("mouseleave", () => { parado = false; });
+  if (!poucoMovimento) {
+    setInterval(() => { if (!parado && !document.hidden) mostrar((atual + 1) % telas.length); }, 4000);
+  }
 }
 
 if (!poucoMovimento) {
