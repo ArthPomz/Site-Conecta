@@ -153,8 +153,7 @@ if (whatsapp) {
 
 // Próximos prazos do cartão do topo, calculados a partir da data de hoje:
 // - DAS do Simples: dia 20, adiado para o próximo dia útil;
-// - FGTS e INSS: dia 20, antecipado para o dia útil anterior;
-// - Opção pelo Simples Nacional: último dia útil de janeiro.
+// - FGTS e INSS: dia 20, antecipado para o dia útil anterior.
 const vencimento = document.querySelector(".vencimento");
 if (vencimento) {
   const pascoa = (ano) => {
@@ -193,7 +192,6 @@ if (vencimento) {
     das: dia20(1),
     fgts: dia20(-1),
     inss: dia20(-1),
-    opcao: (n) => diaUtil(new Date(hoje.getFullYear() + n, 1, 0), -1),
   };
   const lista = vencimento.querySelector(".prazos");
   const itens = [...lista.children].map((item) => ({ item, data: proximo(regras[item.dataset.prazo]) }));

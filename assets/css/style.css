@@ -132,7 +132,7 @@ img { max-width: 100%; display: block; }
 .hero-painel img { width: min(260px, 100%); height: auto; }
 .hero + .secao { padding-top: 64px; padding-bottom: 72px; }
 
-/* Próximos prazos (DAS, FGTS, INSS, opção pelo Simples), calculados pelo main.js */
+/* Próximos prazos (DAS, FGTS e INSS), calculados pelo main.js */
 .vencimento {
   display: flex; flex-direction: column; gap: 12px; width: min(360px, 100%);
   padding: 20px 24px; background: var(--azul-escuro); color: #fff;
