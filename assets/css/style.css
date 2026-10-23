@@ -181,7 +181,8 @@ img { max-width: 100%; display: block; }
 .secao-cabeca .titulo { margin-bottom: 0; }
 
 /* Topo das páginas internas: mesma faixa azul do início */
-.topo { padding: 112px 0 96px; }
+.topo { padding: 80px 0 64px; }
+.topo + .secao { padding-top: 64px; }
 .topo .titulo { font-size: var(--t-gigante); color: #fff; max-width: 22ch; }
 .topo .subtitulo, .topo .texto p { color: var(--texto-azul); }
 .topo .texto { margin-top: 8px; }
@@ -396,7 +397,8 @@ img { max-width: 100%; display: block; }
 @media (max-width: 720px) {
   .secao, .chamada { padding: 64px 0; }
   .faixa { padding: 64px 0; }
-  .topo { padding: 72px 0 64px; }
+  .topo { padding: 56px 0 48px; }
+  .topo + .secao { padding-top: 40px; }
   .topo .titulo { font-size: clamp(2.1rem, 1rem + 5vw, 2.6rem); }
   .topo-longo .titulo { font-size: clamp(1.65rem, 0.6rem + 4.4vw, 2.6rem); }
   .instagram-perfil strong { font-size: var(--t-texto); }
