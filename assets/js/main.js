@@ -151,8 +151,10 @@ if (whatsapp) {
   }, { passive: true });
 }
 
-// Próximo vencimento do DAS (Simples Nacional): todo dia 20, ou o próximo
-// dia útil quando o dia 20 cai em fim de semana ou feriado nacional
+// Próximos prazos do cartão do topo, calculados a partir da data de hoje:
+// - DAS do Simples: dia 20, adiado para o próximo dia útil;
+// - FGTS e INSS: dia 20, antecipado para o dia útil anterior;
+// - Opção pelo Simples Nacional: último dia útil de janeiro.
 const vencimento = document.querySelector(".vencimento");
 if (vencimento) {
   const pascoa = (ano) => {
@@ -172,21 +174,38 @@ if (vencimento) {
     [-48, -47, -2, 60].forEach((dias) => lista.add(chave(new Date(ano, p.getMonth(), p.getDate() + dias))));
     return lista;
   };
-  const diaUtil = (data) => {
+  // passo 1 adia para o próximo dia útil, passo -1 antecipa para o anterior
+  const diaUtil = (data, passo) => {
     while (data.getDay() === 0 || data.getDay() === 6 || feriados(data.getFullYear()).has(chave(data))) {
-      data.setDate(data.getDate() + 1);
+      data.setDate(data.getDate() + passo);
     }
     return data;
   };
   const agora = new Date();
   const hoje = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate());
-  let proximo = diaUtil(new Date(hoje.getFullYear(), hoje.getMonth(), 20));
-  if (proximo < hoje) proximo = diaUtil(new Date(hoje.getFullYear(), hoje.getMonth() + 1, 20));
-  const faltam = Math.round((proximo - hoje) / 86400000);
-  vencimento.querySelector(".vencimento-data").textContent =
-    proximo.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" });
-  vencimento.querySelector(".vencimento-falta").textContent =
-    faltam === 0 ? "Vence hoje" : faltam === 1 ? "Falta 1 dia" : `Faltam ${faltam} dias`;
+  const proximo = (calcular) => {
+    let data = calcular(0);
+    for (let n = 1; data < hoje; n++) data = calcular(n);
+    return data;
+  };
+  const dia20 = (passo) => (n) => diaUtil(new Date(hoje.getFullYear(), hoje.getMonth() + n, 20), passo);
+  const regras = {
+    das: dia20(1),
+    fgts: dia20(-1),
+    inss: dia20(-1),
+    opcao: (n) => diaUtil(new Date(hoje.getFullYear() + n, 1, 0), -1),
+  };
+  const lista = vencimento.querySelector(".prazos");
+  const itens = [...lista.children].map((item) => ({ item, data: proximo(regras[item.dataset.prazo]) }));
+  itens.sort((x, y) => x.data - y.data).forEach(({ item, data }) => {
+    const faltam = Math.round((data - hoje) / 86400000);
+    item.querySelector(".prazo-data").textContent = data
+      .toLocaleDateString("pt-BR", { day: "numeric", month: "short" })
+      .replace(" de ", " ").replace(".", "");
+    item.querySelector(".prazo-falta").textContent =
+      faltam === 0 ? "hoje" : faltam === 1 ? "1 dia" : `${faltam} dias`;
+    lista.append(item);
+  });
 }
 
 if (!poucoMovimento) {

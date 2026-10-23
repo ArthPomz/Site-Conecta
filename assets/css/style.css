@@ -129,18 +129,20 @@ img { max-width: 100%; display: block; }
 .hero-texto > p { font-size: var(--t-destaque); line-height: 1.4; max-width: 520px; margin-bottom: 40px; }
 .hero .botao-contorno { color: #fff; }
 .hero-painel { display: flex; flex-direction: column; align-items: center; gap: 32px; }
-.hero-painel .vencimento { text-align: center; align-items: center; }
 .hero-painel img { width: min(260px, 100%); height: auto; }
 .hero + .secao { padding-top: 64px; padding-bottom: 72px; }
 
-/* Próximo vencimento do DAS, calculado pelo main.js a partir da data de hoje */
+/* Próximos prazos (DAS, FGTS, INSS, opção pelo Simples), calculados pelo main.js */
 .vencimento {
-  display: flex; flex-direction: column; gap: 2px; min-width: 260px;
+  display: flex; flex-direction: column; gap: 12px; width: min(360px, 100%);
   padding: 20px 24px; background: var(--azul-escuro); color: #fff;
 }
 .vencimento-rotulo { font-size: var(--t-pequeno); color: var(--texto-azul-suave); }
-.vencimento-data { font-family: var(--fonte-titulo); font-size: var(--t-destaque); letter-spacing: -0.01em; line-height: 1.2; }
-.vencimento-falta { color: var(--ciano); font-weight: 600; }
+.prazos { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.prazos li { display: grid; grid-template-columns: 1fr auto 4.5em; gap: 16px; white-space: nowrap; align-items: baseline; text-align: left; }
+.prazo-nome { font-weight: 600; }
+.prazo-data { color: var(--texto-azul-suave); }
+.prazo-falta { color: var(--ciano); font-weight: 600; text-align: right; }
 
 /* Sinais de luz que correm pelas linhas do circuito (desenhados pelo main.js) */
 .hero, .topo { position: relative; isolation: isolate; overflow: hidden; }
@@ -354,7 +356,6 @@ img { max-width: 100%; display: block; }
   .hero-painel { display: contents; }
   .hero-painel img { order: -1; }
   .vencimento { order: 1; justify-self: start; }
-  .hero-painel .vencimento { text-align: left; align-items: flex-start; }
   .hero-painel img { width: 220px; }
   .faq, .comparativo, .instagram, .contato-grade { gap: 40px; }
   .faixa .container { gap: 24px; }
@@ -378,7 +379,7 @@ img { max-width: 100%; display: block; }
   .botao { width: 100%; }
   .hero { padding-top: 40px; padding-bottom: 48px; gap: 28px; }
   .hero-painel img { width: 120px; }
-  .vencimento { min-width: 0; padding: 16px 20px; }
+  .vencimento { padding: 16px 20px; width: 100%; }
   .hero h1 { margin-bottom: 20px; }
   .hero-texto > p { margin-bottom: 28px; }
   .hero .botoes { flex-wrap: nowrap; gap: 12px; }

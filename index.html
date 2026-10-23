@@ -49,12 +49,16 @@
       </div>
       <div class="hero-painel">
         <img src="assets/img/logo-vertical.svg" alt="" width="200" height="142">
-        <!-- O main.js troca este texto pela próxima data de vencimento e pelos dias que faltam -->
-        <p class="vencimento">
-          <span class="vencimento-rotulo">Próximo DAS do Simples Nacional</span>
-          <strong class="vencimento-data">Todo dia 20</strong>
-          <span class="vencimento-falta">ou no próximo dia útil</span>
-        </p>
+        <!-- O main.js troca as datas pelos próximos vencimentos e pelos dias que faltam -->
+        <div class="vencimento">
+          <p class="vencimento-rotulo">Próximos prazos</p>
+          <ul class="prazos">
+            <li data-prazo="das"><span class="prazo-nome">DAS</span><span class="prazo-data">Dia 20</span><span class="prazo-falta"></span></li>
+            <li data-prazo="fgts"><span class="prazo-nome">FGTS</span><span class="prazo-data">Dia 20</span><span class="prazo-falta"></span></li>
+            <li data-prazo="inss"><span class="prazo-nome">INSS</span><span class="prazo-data">Dia 20</span><span class="prazo-falta"></span></li>
+            <li data-prazo="opcao"><span class="prazo-nome">Opção pelo Simples</span><span class="prazo-data">Fim de janeiro</span><span class="prazo-falta"></span></li>
+          </ul>
+        </div>
       </div>
     </section>
 
