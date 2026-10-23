@@ -43,7 +43,7 @@ Conteúdo tirado do documento *Relação de Serviços - Conecta* enviado pelo cl
 - Emissão de Envelopes de Pagamento de Salários
 - Controle de Emissão de Recibos de "Pro-labore"
 - Emissão de Folha de Pagamento de Salários
-- Emissão das Guias de Recolhimento das Contribuições sobre a Folha
+- Emissão das Guias de Recolhimento das Contribuições sobre a Folha de Pagamento
 - Emissão de Relatórios Complementares (RAIS, GFIP, CAGED)
 - Controle de Contrato de Experiência
 - Controle do Período Aquisitivo de Férias
