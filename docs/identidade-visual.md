@@ -6,54 +6,54 @@ Baseada no logo da Conecta. A versão atual, atualizada em outubro de 2026, é `
 
 | Uso | Cor | Variável CSS |
 | --- | --- | --- |
-| Principal (azul do logo) | `#2F5A8C` | `--cor-principal` |
-| Principal escura (rodapé, hover) | `#1B3557` | `--cor-principal-escura` |
-| Vibrante (botões principais, ponto dos títulos) | `#5CC8FF` | `--cor-vibrante` |
-| Destaque (linhas do circuito) | `#3D86C6` | `--cor-destaque` |
-| Destaque clara (menu ativo) | `#A9D1F2` | `--cor-destaque-clara` |
-| Texto | `#1F2933` | `--cor-texto` |
-| Texto suave | `#4A5563` | `--cor-texto-suave` |
-| Fundo | `#FFFFFF` | `--cor-fundo` |
-| Fundo alternativo | `#F4F7FB` | `--cor-fundo-alt` |
+| Azul do logo (faixas do topo, passos, Instagram) | `#2F5A8C` | `--azul` |
+| Azul escuro (primeiro passo, cabeçalho da tabela) | `#1B3557` | `--azul-escuro` |
+| Azul médio (último passo, marcadores das listas) | `#3A6EA8` | `--azul-medio` |
+| Ciano (botões principais e faixa "Vamos conversar") | `#5CC8FF` | `--ciano` |
+| Texto sobre o ciano | `#0E1A2B` | `--noite` |
 
-As variáveis ficam no topo de `assets/css/style.css`. Mudando ali, o site inteiro muda.
+Essas cores da marca valem nos dois modos. As que mudam com o tema:
 
-O azul de destaque (`#3D86C6`) não tem contraste suficiente para texto branco pequeno. Use-o em palavras destacadas dos títulos e em detalhes. O azul vibrante (`#5CC8FF`) sempre leva texto escuro (`--cor-principal-escura`).
+| Uso | Modo claro | Modo escuro (padrão) | Variável CSS |
+| --- | --- | --- | --- |
+| Fundo | `#FFFFFF` | `#0E1A2B` | `--fundo` |
+| Superfície (cartões, faixas alternadas) | `#EEF3F9` | `#15273F` | `--superficie` |
+| Superfície ao passar o mouse | `#E1EAF4` | `#1C3250` | `--superficie-forte` |
+| Texto | `#14243A` | `#E8EEF5` | `--texto` |
+| Texto suave | `#4A5563` | `#A9B8CA` | `--texto-suave` |
+| Links | `#2F5A8C` | `#8BC4F2` | `--link` |
+| Rodapé | `#1B3557` | `#08121F` | `--rodape` |
+
+As variáveis ficam no topo de `assets/css/style.css` (modo claro) e no bloco `[data-tema="escuro"]` (modo escuro). Mudando ali, o site inteiro muda. O ciano sempre leva texto escuro (`--noite`).
 
 ## Estilo visual
 
-Inspirado no visual de sites de contabilidade digital (referência dada pelo cliente: Contabilizei), sem copiar textos nem telas:
+Revisado em outubro de 2026 com a skill `design-taste-frontend` (pasta `.claude/skills/`), para o site ficar com menos "cara de site feito por IA". A ideia principal continua a mesma; o que mudou:
 
-- Cabeçalho branco com o logo em azul e botão "Fale conosco" em pílula.
-- Títulos grandes em negrito, com palavras destacadas em azul e um ponto final na cor vibrante.
-- Botões em formato de pílula: cheio (vibrante) e contorno (azul).
-- Página inicial com uma faixa de circuito de borda a borda: texto branco à esquerda e o logo à direita. No modo escuro, a parte de baixo da faixa se mistura com o fundo da página (variável `--hero-fundo`).
-- Cartões com fundo em degradê azul-claro, cantos de 16px e ícones de linha.
-- Seções: serviços, como funciona, comparativo, perguntas frequentes e faixa de chamada.
-- Rodapé azul-escuro com colunas de links.
+- Cores chapadas: nada de degradê, sombra em blocos parados ou linhas finas separando as coisas. As áreas se separam por um degrau de cor (fundo e superfície).
+- Títulos em uma só cor, sem palavras coloridas nem ponto final colorido.
+- Botões sempre em formato de pílula; blocos com cantos retos.
+- Faixa azul com o circuito no topo de todas as páginas; o circuito corre devagar no fundo.
+- Cartões de serviço sem ícones; "Como funciona" virou três faixas lado a lado, do azul mais escuro ao mais claro (a ordem aparece pela cor, sem números).
+- Páginas de Serviços e "O que é a Conecta": um assunto por faixa, com o título à esquerda e o texto à direita.
+- "Vamos conversar" virou uma faixa inteira em ciano, o único bloco grande na cor de destaque.
+- Rodapé com títulos em letras normais (sem caixa alta pequena).
 - No menu, "eContador" abre o portal eContador (Alterdata) em uma nova aba.
+
+Para conferir o site com a skill: `node .claude/skills/design-taste-frontend/scripts/lint.mjs index.html pages assets` e `node .claude/skills/design-taste-frontend/scripts/inspect.mjs index.html`. A pasta `.taste-skill/` que ela cria não vai para o repositório.
+
+O que ainda falta segundo a skill: fotos de verdade (do escritório, da equipe, de Fundão). Quando houver, elas são a melhoria que mais faria diferença.
 
 ## Modo noturno
 
-O site abre no modo noturno por padrão. O botão com o sol, no cabeçalho, troca para o modo claro, e a lua volta para o escuro. A escolha fica salva no navegador.
-
-As cores do modo escuro ficam no bloco `[data-tema="escuro"]` em `assets/css/style.css`:
-
-| Uso | Cor |
-| --- | --- |
-| Fundo | `#0E1A2B` |
-| Fundo alternativo | `#13233A` |
-| Cartões e caixas | `#172A44` |
-| Texto | `#E6EDF5` |
-| Texto suave | `#A9B8CA` |
-| Destaque (links e palavras dos títulos) | `#6BB2EC` |
-| Rodapé | `#08121F` |
-
-O azul do logo, o azul vibrante dos botões e o painel de circuito continuam iguais nos dois modos. No escuro, o logo do cabeçalho fica branco.
+O site abre no modo noturno por padrão. O botão com o sol, no cabeçalho, troca para o modo claro, e a lua volta para o escuro. A escolha fica salva no navegador. No escuro, o logo do cabeçalho fica branco.
 
 ## Tipografia
 
-- Fonte: [Inter](https://fonts.google.com/specimen/Inter) (Google Fonts).
+- Títulos: [League Spartan](https://fonts.google.com/specimen/League+Spartan), peso 700.
+- Textos: [Figtree](https://fonts.google.com/specimen/Figtree), pesos 400 e 600.
+- As duas ficam dentro do site, em `assets/fonts/` (licença livre OFL, arquivos de licença na mesma pasta), então não dependem do Google Fonts.
+- Cinco tamanhos no site todo: `--t-pequeno`, `--t-texto`, `--t-destaque`, `--t-titulo` e `--t-gigante`.
 
 ## Arquivos do logo
 
@@ -69,7 +69,7 @@ Todos em `assets/img/`. As versões em SVG são vetoriais, então ficam nítidas
 | `logo-vertical.svg` | Símbolo em cima e o nome embaixo, usada no topo da página inicial e nas perguntas frequentes |
 | `icone.svg` | Símbolo branco em um quadrado azul arredondado, base do ícone |
 | `favicon.png` | Ícone da aba do navegador e do balão do WhatsApp (gerado a partir de `icone.svg`) |
-| `circuito.svg` | Padrão de circuito em vetor (nítido em qualquer tela), usado na faixa da página inicial e nas perguntas frequentes |
+| `circuito.svg` | Padrão de circuito em vetor (nítido em qualquer tela), fundo transparente, usado sobre o azul do logo nas faixas do topo e no cartão do Instagram |
 | `fundo-circuito.jpg` | Recorte do circuito do logo original (não usado mais, fica como referência) |
 
 O logo novo chegou em uma imagem pequena (296x96 pixels). Para ficar nítido, ele foi redesenhado em vetor: o símbolo foi refeito com círculos ajustados à imagem original, e as letras usam a fonte Montserrat (licença livre, OFL) convertida em contorno. Se o cliente tiver o arquivo oficial em vetor (SVG, AI ou PDF), vale trocar pelos oficiais.

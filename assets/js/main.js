@@ -1,3 +1,18 @@
+// Ao abrir uma página pelo menu, ela começa sempre do topo
+// (a não ser que o link leve a uma parte específica, como #perguntas)
+// O scrollIntoView também sobe a janela de fora quando o site aparece dentro
+// de outra página (como na prévia), onde só o scrollTo não basta
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+const irParaTopo = () => {
+  if (location.hash) return;
+  window.scrollTo({ top: 0, behavior: "instant" });
+  document.documentElement.scrollIntoView({ block: "start", behavior: "instant" });
+};
+irParaTopo();
+window.addEventListener("load", irParaTopo);
+window.addEventListener("pageshow", (e) => { if (e.persisted) irParaTopo(); });
+
+// Abre e fecha o menu no celular
 // Abre e fecha o menu no celular
 const botao = document.querySelector(".menu-botao");
 const menu = document.querySelector(".menu");
@@ -21,7 +36,7 @@ document.querySelectorAll(".carrossel").forEach((carrossel) => {
 
   const passo = () => {
     const cartao = trilho.querySelector(".cartao");
-    return cartao ? cartao.offsetWidth + 24 : trilho.clientWidth;
+    return cartao ? cartao.offsetWidth + 8 : trilho.clientWidth;
   };
 
   const atualizarSetas = () => {
@@ -53,7 +68,7 @@ if (temaBotao) {
 
 // Animações: os blocos surgem suavemente quando aparecem na tela
 const alvos = document.querySelectorAll(
-  ".secao-cabeca, .carrossel, :not(.carrossel-trilho) > .cartao, .passo, .tabela, .faq-painel, .faq-caixa, .chamada, .instagram-texto, .instagram-feed, .contato-item, .mapa, .topo .titulo, .topo .subtitulo, .topo .texto"
+  ".secao-cabeca > *, .carrossel, .passos li, .comparativo > div, .tabela thead, .tabela tbody tr, .faq-intro, .faq-lista, .instagram-texto, .instagram-feed, .chamada .container > *, .contato-item, .mapa, .faixa .container > *"
 );
 const poucoMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 if ("IntersectionObserver" in window && !poucoMovimento) {
@@ -74,9 +89,9 @@ if ("IntersectionObserver" in window && !poucoMovimento) {
   }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
   alvos.forEach((alvo) => {
     // Itens lado a lado aparecem um depois do outro
-    const irmaos = [...alvo.parentElement.children].filter((el) => el.matches(".cartao, .passo, .contato-item"));
+    const irmaos = [...alvo.parentElement.children].filter((el) => el.matches(".secao-cabeca > *, .passos li, .comparativo > *, .tabela tbody tr, .faq > *, .instagram > *, .chamada .container > *, .contato-item, .faixa .container > *"));
     const posicao = irmaos.indexOf(alvo);
-    if (posicao > 0) alvo.style.setProperty("--atraso", `${Math.min(posicao, 3) * 0.12}s`);
+    if (posicao > 0) alvo.style.setProperty("--atraso", `${Math.min(posicao, 5) * 0.12}s`);
     alvo.classList.add("revelar");
     observador.observe(alvo);
   });
@@ -114,7 +129,19 @@ if (whatsapp) {
     </form>`;
   document.body.appendChild(balao);
 
-  const abrir = () => { balao.classList.add("aberto"); whatsapp.setAttribute("aria-expanded", "true"); };
+  // A caixa de texto cresce sozinha conforme a pessoa escreve
+  const caixa = balao.querySelector("textarea");
+  const ajustarAltura = () => {
+    caixa.style.height = "auto";
+    caixa.style.height = `${caixa.scrollHeight}px`;
+  };
+  caixa.addEventListener("input", ajustarAltura);
+
+  const abrir = () => {
+    balao.classList.add("aberto");
+    whatsapp.setAttribute("aria-expanded", "true");
+    ajustarAltura();
+  };
   const fechar = () => { balao.classList.remove("aberto"); whatsapp.setAttribute("aria-expanded", "false"); };
   let fechadoPelaPessoa = false;
 
@@ -138,3 +165,174 @@ if (whatsapp) {
     if (noFim && !fechadoPelaPessoa && !balao.classList.contains("aberto")) abrir();
   }, { passive: true });
 }
+
+// Próximos prazos do cartão do topo, calculados a partir da data de hoje:
+// - DAS do Simples: dia 20, adiado para o próximo dia útil;
+// - FGTS e INSS: dia 20, antecipado para o dia útil anterior.
+const vencimento = document.querySelector(".vencimento");
+if (vencimento) {
+  const pascoa = (ano) => {
+    const a = ano % 19, b = Math.floor(ano / 100), c = ano % 100;
+    const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+    const g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
+    const i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7;
+    const m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const mes = Math.floor((h + l - 7 * m + 114) / 31), dia = ((h + l - 7 * m + 114) % 31) + 1;
+    return new Date(ano, mes - 1, dia);
+  };
+  const chave = (data) => `${data.getMonth() + 1}-${data.getDate()}`;
+  const feriados = (ano) => {
+    const lista = new Set(["1-1", "4-21", "5-1", "9-7", "10-12", "11-2", "11-15", "11-20", "12-25"]);
+    const p = pascoa(ano);
+    // Carnaval (segunda e terça), Sexta-feira Santa e Corpus Christi
+    [-48, -47, -2, 60].forEach((dias) => lista.add(chave(new Date(ano, p.getMonth(), p.getDate() + dias))));
+    return lista;
+  };
+  // passo 1 adia para o próximo dia útil, passo -1 antecipa para o anterior
+  const diaUtil = (data, passo) => {
+    while (data.getDay() === 0 || data.getDay() === 6 || feriados(data.getFullYear()).has(chave(data))) {
+      data.setDate(data.getDate() + passo);
+    }
+    return data;
+  };
+  const agora = new Date();
+  const hoje = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate());
+  const proximo = (calcular) => {
+    let data = calcular(0);
+    for (let n = 1; data < hoje; n++) data = calcular(n);
+    return data;
+  };
+  const dia20 = (passo) => (n) => diaUtil(new Date(hoje.getFullYear(), hoje.getMonth() + n, 20), passo);
+  const regras = {
+    das: dia20(1),
+    fgts: dia20(-1),
+    inss: dia20(-1),
+  };
+  const lista = vencimento.querySelector(".prazos");
+  const itens = [...lista.children].map((item) => ({ item, data: proximo(regras[item.dataset.prazo]) }));
+  itens.sort((x, y) => x.data - y.data).forEach(({ item, data }) => {
+    const faltam = Math.round((data - hoje) / 86400000);
+    item.querySelector(".prazo-data").textContent =
+      data.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" });
+    item.querySelector(".prazo-falta").textContent =
+      faltam === 0 ? "Vence hoje" : faltam === 1 ? "Falta 1 dia" : `Faltam ${faltam} dias`;
+    lista.append(item);
+  });
+
+  // Um prazo por vez: troca sozinho a cada 4 segundos, para quando o mouse
+  // está em cima e as bolinhas deixam escolher qual ver
+  const telas = [...lista.children];
+  const bolinhas = document.createElement("div");
+  bolinhas.className = "prazos-bolinhas";
+  telas.forEach((tela, i) => {
+    const bolinha = document.createElement("button");
+    bolinha.type = "button";
+    bolinha.setAttribute("aria-label", `Ver ${tela.querySelector(".prazo-nome").textContent}`);
+    bolinha.addEventListener("click", () => mostrar(i));
+    bolinhas.append(bolinha);
+  });
+  vencimento.append(bolinhas);
+  vencimento.classList.add("rodando");
+  let atual = 0;
+  const mostrar = (i) => {
+    atual = i;
+    telas.forEach((tela, n) => {
+      tela.classList.toggle("ativa", n === i);
+      tela.setAttribute("aria-hidden", n !== i);
+      bolinhas.children[n].setAttribute("aria-current", n === i);
+    });
+  };
+  mostrar(0);
+  let parado = false;
+  vencimento.addEventListener("mouseenter", () => { parado = true; });
+  vencimento.addEventListener("mouseleave", () => { parado = false; });
+  if (!poucoMovimento) {
+    setInterval(() => { if (!parado && !document.hidden) mostrar((atual + 1) % telas.length); }, 4000);
+  }
+}
+
+if (!poucoMovimento) {
+  // Título da página inicial: cada palavra surge um pouco depois da anterior
+  const titulo = document.querySelector(".hero h1");
+  if (titulo) {
+    titulo.setAttribute("aria-label", titulo.textContent);
+    titulo.innerHTML = titulo.textContent.trim().split(/\s+/)
+      .map((palavra, i) => `<span class="palavra" aria-hidden="true" style="--i:${i}">${palavra}</span>`).join(" ");
+  }
+
+  // "Como funciona": a barra se acende quando a seção aparece na tela
+  const passos = document.querySelector(".passos");
+  if (passos && "IntersectionObserver" in window) {
+    new IntersectionObserver((entradas, obs) => {
+      if (entradas[0].isIntersecting) { passos.classList.add("acesa"); obs.disconnect(); }
+    }, { threshold: 0.4 }).observe(passos);
+  }
+
+  // Sinais de luz correndo pelas linhas do circuito das faixas azuis
+  const faixas = document.querySelectorAll(".hero, .topo, .instagram-perfil");
+  if (faixas.length) {
+    const arquivo = new URL("../img/circuito.svg", document.currentScript.src).href;
+    fetch(arquivo).then((r) => r.text()).then((texto) => {
+      const modelo = new DOMParser().parseFromString(texto, "image/svg+xml").documentElement;
+      const caminhos = [...modelo.querySelectorAll("path")];
+      faixas.forEach((faixa) => {
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("viewBox", modelo.getAttribute("viewBox"));
+        svg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+        svg.setAttribute("class", "circuito-vivo");
+        svg.setAttribute("aria-hidden", "true");
+        faixa.prepend(svg);
+        const quantos = faixa.matches(".instagram-perfil") ? 5 : window.innerWidth < 720 ? 6 : 12;
+        const escolhidos = [...caminhos].sort(() => Math.random() - 0.5).slice(0, quantos);
+        escolhidos.forEach((original) => {
+          const linha = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          linha.setAttribute("d", original.getAttribute("d"));
+          svg.appendChild(linha);
+          const tamanho = linha.getTotalLength();
+          const traco = 60;
+          linha.style.strokeDasharray = `${traco} ${tamanho + traco}`;
+          linha.style.strokeDashoffset = traco;
+          // O sinal percorre a linha na primeira metade do tempo e descansa na outra
+          linha.animate(
+            [{ strokeDashoffset: traco, offset: 0 }, { strokeDashoffset: -tamanho, offset: 0.5 }, { strokeDashoffset: -tamanho, offset: 1 }],
+            { duration: 5000 + Math.random() * 5000, delay: Math.random() * 6000, iterations: Infinity }
+          );
+        });
+      });
+    }).catch(() => {});
+  }
+}
+
+// Perguntas frequentes: só uma resposta aberta por vez, e ela desce ao abrir
+// e sobe ao fechar
+const perguntas = [...document.querySelectorAll(".faq details")];
+const animarPergunta = (pergunta, abrir) => {
+  const resumo = pergunta.querySelector("summary");
+  if (pergunta._animacao) pergunta._animacao.cancel();
+  if (poucoMovimento) { pergunta.open = abrir; return; }
+  const inicio = pergunta.offsetHeight;
+  if (abrir) pergunta.open = true;
+  const fim = abrir ? pergunta.scrollHeight : resumo.offsetHeight;
+  pergunta.style.overflow = "hidden";
+  const animacao = pergunta.animate(
+    [{ height: `${inicio}px` }, { height: `${fim}px` }],
+    { duration: 300, easing: "cubic-bezier(0.2, 0.7, 0.2, 1)" }
+  );
+  pergunta._animacao = animacao;
+  animacao.onfinish = () => {
+    if (!abrir) pergunta.open = false;
+    pergunta.style.overflow = "";
+    pergunta._animacao = null;
+  };
+};
+perguntas.forEach((pergunta) => {
+  pergunta.querySelector("summary").addEventListener("click", (e) => {
+    e.preventDefault();
+    const abrir = !pergunta.open || pergunta._animacao?.fechando;
+    if (abrir) {
+      perguntas.forEach((outra) => { if (outra !== pergunta && outra.open) animarPergunta(outra, false); });
+    }
+    animarPergunta(pergunta, abrir);
+    if (pergunta._animacao) pergunta._animacao.fechando = !abrir;
+  });
+});

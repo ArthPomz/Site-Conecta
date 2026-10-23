@@ -12,9 +12,6 @@
       if (tema) document.documentElement.dataset.tema = tema;
     } catch (e) {}
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -27,7 +24,7 @@
           <svg class="lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
           <svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
         </button>
-        <button class="menu-botao" aria-label="Abrir menu" aria-expanded="false">&#9776;</button>
+        <button class="menu-botao" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <ul class="menu">
           <li><a href="index.html" aria-current="page">Início</a></li>
           <li><a href="pages/servicos.html">Serviços</a></li>
@@ -43,7 +40,7 @@
   <main>
     <section class="hero">
       <div class="hero-texto">
-        <h1>Sua contabilidade <span>organizada</span> para o seu negócio <span>crescer</span></h1>
+        <h1>Sua contabilidade organizada para o seu negócio crescer</h1>
         <p>Da abertura da empresa à gestão financeira, a Conecta cuida dos números para você focar no que importa.</p>
         <div class="botoes">
           <a class="botao botao-primario" href="https://wa.me/5527996970273" target="_blank" rel="noopener">Fale com a gente</a>
@@ -52,80 +49,94 @@
       </div>
       <div class="hero-painel">
         <img src="assets/img/logo-vertical.svg" alt="" width="200" height="142">
+        <!-- O main.js troca as datas pelos próximos vencimentos e pelos dias que faltam -->
+        <div class="vencimento">
+          <p class="vencimento-rotulo">Próximos prazos</p>
+          <ul class="prazos">
+            <li data-prazo="das"><span class="prazo-nome">DAS</span><span class="prazo-data">Dia 20</span><span class="prazo-falta"></span></li>
+            <li data-prazo="fgts"><span class="prazo-nome">FGTS</span><span class="prazo-data">Dia 20</span><span class="prazo-falta"></span></li>
+            <li data-prazo="inss"><span class="prazo-nome">INSS</span><span class="prazo-data">Dia 20</span><span class="prazo-falta"></span></li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <section class="secao">
       <div class="container">
-        <div class="secao-cabeca centro">
-          <h2 class="titulo">Tudo o que sua empresa precisa em um só lugar</h2>
-          <p class="subtitulo">Serviços contábeis completos, do primeiro CNPJ à rotina do dia a dia.</p>
+        <div class="secao-cabeca">
+          <h2 class="titulo">Tudo o que sua empresa precisa</h2>
+          <p class="subtitulo">Serviços contábeis completos, em um só lugar: do primeiro CNPJ à rotina do dia a dia.</p>
         </div>
         <div class="carrossel">
-          <button class="carrossel-seta anterior" type="button" aria-label="Serviço anterior">&#8249;</button>
           <div class="carrossel-trilho cartoes" tabindex="0" aria-label="Serviços">
             <article class="cartao" id="abertura-de-empresas">
-              <div class="cartao-cabeca"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01"/></svg><h3>Abertura de Empresas</h3></div>
+              <h3>Abertura de Empresas</h3>
               <p>Está procurando saber como abrir uma empresa? Qual a tributação? Quais as exigências legais? Não se preocupe: a Conecta te orienta e cuida de todo o processo de abertura de empresa para você.</p>
               <a class="link" href="pages/servicos.html#abertura-de-empresas">Saiba mais</a>
             </article>
             <article class="cartao" id="assessoria-contabil">
-              <div class="cartao-cabeca"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h8"/></svg><h3>Assessoria Contábil</h3></div>
-              <p>Produzimos relatórios contábeis mensais com foco gerencial com o objetivo de promover uma eficiência maior na administração financeira de sua empresa, apontando o melhor caminho para redução de gastos, impostos e processos internos.</p>
+              <h3>Assessoria Contábil</h3>
+              <p>Produzimos relatórios contábeis com foco gerencial com o objetivo de promover uma eficiência maior na administração financeira de sua empresa, apontando o melhor caminho para redução de gastos, impostos e processos internos.</p>
               <a class="link" href="pages/servicos.html#assessoria-contabil">Saiba mais</a>
             </article>
             <article class="cartao" id="assessoria-fiscal-tributaria">
-              <div class="cartao-cabeca"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v3h3"/><path d="M9 16l6-6"/><circle cx="9.5" cy="10.5" r="1"/><circle cx="14.5" cy="15.5" r="1"/></svg><h3>Assessoria Fiscal/Tributária</h3></div>
+              <h3>Assessoria Fiscal/Tributária</h3>
               <p>Analisamos o melhor regime tributário, para a sua empresa ter a maior eficiência tributária possível; calculamos e emitimos as guias de pagamento dos seus tributos; planejamos juntamente com a empresa.</p>
               <a class="link" href="pages/servicos.html#assessoria-fiscal-tributaria">Saiba mais</a>
             </article>
             <article class="cartao" id="bpo-financeiro">
-              <div class="cartao-cabeca"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M6 16v-4M10 16V8M14 16v-6M18 16V5"/></svg><h3>BPO Financeiro</h3></div>
+              <h3>BPO Financeiro</h3>
               <p>Deixe a gestão das finanças conosco para que você possa ganhar tempo, aumentar a eficiência e ao mesmo tempo diminuindo custos administrativos do seu negócio.</p>
               <a class="link" href="pages/servicos.html#bpo-financeiro">Saiba mais</a>
             </article>
             <article class="cartao" id="departamento-pessoal">
-              <div class="cartao-cabeca"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.8.4 5 2.8 5 5.8"/></svg><h3>Departamento Pessoal</h3></div>
+              <h3>Departamento Pessoal</h3>
               <p>Atendimento personalizado e tecnologicamente avançado para todos os seus serviços de departamento de pessoal. Todas as informações e movimentação do seu departamento pessoal são enviadas para nós de forma eletrônica, sem complicação e de forma segura.</p>
               <a class="link" href="pages/servicos.html#departamento-pessoal">Saiba mais</a>
             </article>
             <article class="cartao" id="produtor-rural-pessoa-fisica-e-pessoa-juridica">
-              <div class="cartao-cabeca"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11c0-4 3-7 7-7 0 4-3 7-7 7z"/><path d="M12 14c0-3-2.5-5.5-6-5.5 0 3 2.5 5.5 6 5.5z"/><path d="M5 21h14"/></svg><h3>Produtor Rural</h3></div>
+              <h3>Produtor Rural</h3>
               <p>Análise da melhor forma de tributação conforme cada caso, acompanhamento mensal do resultado da atividade rural, elaboração de livro caixa da atividade rural, LCDPR, ITR, CCIR, regularização de documentos do seu imóvel rural, gestão patrimonial.</p>
               <a class="link" href="pages/servicos.html#produtor-rural-pessoa-fisica-e-pessoa-juridica">Saiba mais</a>
             </article>
           </div>
-          <button class="carrossel-seta proximo" type="button" aria-label="Próximo serviço">&#8250;</button>
+          <div class="carrossel-controles">
+            <button class="carrossel-seta anterior" type="button" aria-label="Serviço anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button class="carrossel-seta proximo" type="button" aria-label="Próximo serviço"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="secao secao-alt" id="como-funciona">
       <div class="container">
-        <div class="secao-cabeca centro">
+        <div class="secao-cabeca">
           <h2 class="titulo">Como funciona</h2>
           <p class="subtitulo">Começar com a Conecta é simples.</p>
         </div>
-        <div class="passos">
-          <div class="passo">
+        <ol class="passos">
+          <li>
             <h3>Fale com a gente</h3>
             <p>Chame no WhatsApp ou mande um e-mail contando sobre a sua empresa ou o seu projeto.</p>
-          </div>
-          <div class="passo">
+          </li>
+          <li>
             <h3>Receba um diagnóstico</h3>
             <p>Analisamos sua situação e indicamos o melhor caminho, inclusive o regime tributário mais vantajoso.</p>
-          </div>
-          <div class="passo">
+          </li>
+          <li>
             <h3>Deixe a rotina conosco</h3>
-            <p>Cuidamos de impostos, folha, obrigações e relatórios, e você acompanha tudo de perto.</p>
-          </div>
-        </div>
+            <p>Cuidamos de impostos, folha de pagamento, obrigações e relatórios, e você acompanha tudo de perto.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
     <section class="secao">
       <div class="container comparativo">
-        <h2 class="titulo sem-ponto">Por que fazer tudo sozinho se <span>a Conecta cuida disso</span> para você?</h2>
+        <div>
+          <h2 class="titulo">Por que fazer tudo sozinho?</h2>
+          <p class="subtitulo">A Conecta cuida disso para você, e você acompanha cada número.</p>
+        </div>
         <table class="tabela">
           <thead>
             <tr><th>Com a Conecta</th><th>Sem contador</th></tr>
@@ -133,8 +144,10 @@
           <tbody>
             <tr><td>Regime tributário <strong>escolhido com análise</strong></td><td>Risco de pagar <strong>mais imposto</strong></td></tr>
             <tr><td>Guias e declarações <strong>em dia</strong></td><td>Prazos <strong>esquecidos</strong> e multas</td></tr>
-            <tr><td>Folha e férias <strong>sem dor de cabeça</strong></td><td>Cálculos trabalhosos e <strong>erros</strong></td></tr>
+            <tr><td>Folha de pagamento e férias <strong>sem dor de cabeça</strong></td><td>Cálculos trabalhosos e <strong>erros</strong></td></tr>
             <tr><td>Relatórios para <strong>decidir melhor</strong></td><td>Números <strong>espalhados</strong></td></tr>
+            <tr><td>Planejamento <strong>patrimonial e sucessório</strong></td><td><strong>Dor de cabeça</strong> e mais gastos na administração de seu patrimônio</td></tr>
+            <tr><td>Controle de sua <strong>atividade rural</strong></td><td>Insegurança, descontrole e <strong>mais gastos com impostos</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -142,14 +155,15 @@
 
     <section class="secao secao-alt" id="perguntas">
       <div class="container faq">
-        <div class="faq-painel">
-          <img src="assets/img/logo-vertical.svg" alt="" width="160" height="114">
-        </div>
-        <div class="faq-caixa">
+        <div class="faq-intro">
           <h2 class="titulo">Perguntas frequentes</h2>
+          <p class="subtitulo">O que mais nos perguntam. Se a sua dúvida não estiver aqui, é só chamar.</p>
+          <a class="botao botao-contorno" href="https://wa.me/5527996970273" target="_blank" rel="noopener">Perguntar no WhatsApp</a>
+        </div>
+        <div class="faq-lista">
             <details>
-              <summary>A Conecta ajuda a abrir uma empresa?</summary>
-              <p>Sim. Analisamos a melhor tributação e o quadro societário, registramos o contrato social e cuidamos de alvarás, licenças e da legalização nos órgãos públicos.</p>
+              <summary>Como a Conecta me ajuda na estruturação do meu negócio?</summary>
+              <p>Analisamos a melhor tributação e o quadro societário, registramos o contrato social e cuidamos de alvarás, licenças e da legalização nos órgãos públicos.</p>
             </details>
             <details>
               <summary>Quais regimes tributários vocês atendem?</summary>
@@ -169,7 +183,7 @@
             </details>
             <details>
               <summary>Onde fica o escritório?</summary>
-              <p>Na Rua Stefano Broseghini, 142, em Fundão (ES). Também atendemos pelo WhatsApp e por e-mail.</p>
+              <p>Na Rua Stefano Broseghini, 142, em Fundão (ES). Também atendemos pelo WhatsApp e por e-mail ou, se preferir, vamos até você.</p>
             </details>
         </div>
       </div>
@@ -178,7 +192,7 @@
     <section class="secao" id="instagram">
       <div class="container instagram">
         <div class="instagram-texto">
-          <h2 class="titulo">Acompanhe a Conecta no <span>Instagram</span></h2>
+          <h2 class="titulo">Acompanhe a Conecta no Instagram</h2>
           <p class="subtitulo">Novidades do escritório e da contabilidade, direto no seu feed.</p>
           <a class="botao botao-primario" href="https://www.instagram.com/conectacontabilfundao/" target="_blank" rel="noopener">Seguir @conectacontabilfundao</a>
         </div>
@@ -194,15 +208,15 @@
       </div>
     </section>
 
-    <section class="secao">
+    <section class="chamada">
       <div class="container">
-        <div class="chamada">
+        <div>
           <h2 class="titulo">Vamos conversar</h2>
           <p>Conte o que sua empresa precisa e receba uma orientação sem compromisso.</p>
-          <div class="botoes">
-            <a class="botao botao-primario" href="https://wa.me/5527996970273" target="_blank" rel="noopener">Chamar no WhatsApp</a>
-            <a class="botao botao-branco" href="mailto:contato@conectagcont.com.br">Enviar e-mail</a>
-          </div>
+        </div>
+        <div class="botoes">
+          <a class="botao botao-noite" href="https://wa.me/5527996970273" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+          <a class="botao botao-contorno" href="mailto:contato@conectagcont.com.br">Enviar e-mail</a>
         </div>
       </div>
     </section>
@@ -216,7 +230,7 @@
           <p>Contabilidade próxima e digital para empresas e produtores rurais.</p>
         </div>
         <div>
-          <h4>SERVIÇOS</h4>
+          <h2>Serviços</h2>
           <ul>
             <li><a href="pages/servicos.html#abertura-de-empresas">Abertura de Empresas</a></li>
             <li><a href="pages/servicos.html#assessoria-contabil">Assessoria Contábil</a></li>
@@ -227,7 +241,7 @@
           </ul>
         </div>
         <div>
-          <h4>A CONECTA</h4>
+          <h2>A Conecta</h2>
           <ul>
             <li><a href="pages/sobre.html">O que é a Conecta</a></li>
             <li><a href="index.html#como-funciona">Como funciona</a></li>
@@ -236,7 +250,7 @@
           </ul>
         </div>
         <div>
-          <h4>CONTATO</h4>
+          <h2>Contato</h2>
           <ul>
             <li><a href="https://wa.me/5527996970273" target="_blank" rel="noopener">(27) 99697-0273</a></li>
             <li><a href="mailto:contato@conectagcont.com.br">contato@conectagcont.com.br</a></li>

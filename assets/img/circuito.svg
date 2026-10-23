@@ -1,7 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMid slice">
-<defs><linearGradient id="f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2F5A8C"/><stop offset="1" stop-color="#1F3F66"/></linearGradient>
-<radialGradient id="b" cx="0.75" cy="0.45" r="0.6"><stop offset="0" stop-color="#4A86C2" stop-opacity="0.45"/><stop offset="1" stop-color="#4A86C2" stop-opacity="0"/></radialGradient></defs>
-<rect width="1600" height="720" fill="url(#f)"/><rect width="1600" height="720" fill="url(#b)"/>
+
 <path d="M20,-10 L20,236 L0,256 L0,473 L-30,503 L-30,730" fill="none" stroke="#7CC4F5" stroke-opacity="0.32" stroke-width="2" stroke-linejoin="round"/>
 <path d="M58,-10 L58,181 L78,201 L78,402" fill="none" stroke="#7CC4F5" stroke-opacity="0.25" stroke-width="2" stroke-linejoin="round"/>
 <circle cx="78" cy="402" r="5.2" fill="#7CC4F5" fill-opacity="0.40"/>
