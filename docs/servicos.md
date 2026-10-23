@@ -65,7 +65,7 @@ Conteúdo tirado do documento *Relação de Serviços - Conecta* enviado pelo cl
 ## Descrições curtas (para o site)
 
 - **Abertura de Empresas:** Está procurando saber como abrir uma empresa? Qual a tributação? Quais as exigências legais? Não se preocupe: a Conecta te orienta e cuida de todo o processo de abertura de empresa para você.
-- **Assessoria Contábil:** Produzimos relatórios contábeis mensais com foco gerencial com o objetivo de promover uma eficiência maior na administração financeira de sua empresa, apontando o melhor caminho para redução de gastos, impostos e processos internos.
+- **Assessoria Contábil:** Produzimos relatórios contábeis com foco gerencial com o objetivo de promover uma eficiência maior na administração financeira de sua empresa, apontando o melhor caminho para redução de gastos, impostos e processos internos.
 - **Assessoria Fiscal/Tributária:** Analisamos o melhor regime tributário, para a sua empresa ter a maior eficiência tributária possível; calculamos e emitimos as guias de pagamento dos seus tributos; planejamos juntamente com a empresa.
 - **BPO Financeiro:** Deixe a gestão das finanças conosco para que você possa ganhar tempo, aumentar a eficiência e ao mesmo tempo diminuindo custos administrativos do seu negócio.
 - **Departamento Pessoal:** Atendimento personalizado e tecnologicamente avançado para todos os seus serviços de departamento de pessoal. Todas as informações e movimentação do seu departamento pessoal são enviadas para nós de forma eletrônica, sem complicação e de forma segura.
