@@ -1,7 +1,16 @@
 // Ao abrir uma página pelo menu, ela começa sempre do topo
 // (a não ser que o link leve a uma parte específica, como #perguntas)
+// O scrollIntoView também sobe a janela de fora quando o site aparece dentro
+// de outra página (como na prévia), onde só o scrollTo não basta
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-if (!location.hash) window.scrollTo({ top: 0, behavior: "instant" });
+const irParaTopo = () => {
+  if (location.hash) return;
+  window.scrollTo({ top: 0, behavior: "instant" });
+  document.documentElement.scrollIntoView({ block: "start", behavior: "instant" });
+};
+irParaTopo();
+window.addEventListener("load", irParaTopo);
+window.addEventListener("pageshow", (e) => { if (e.persisted) irParaTopo(); });
 
 // Abre e fecha o menu no celular
 // Abre e fecha o menu no celular
