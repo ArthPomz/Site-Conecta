@@ -256,7 +256,7 @@ if (!poucoMovimento) {
   }
 
   // Sinais de luz correndo pelas linhas do circuito das faixas azuis
-  const faixas = document.querySelectorAll(".hero, .topo");
+  const faixas = document.querySelectorAll(".hero, .topo, .instagram-perfil");
   if (faixas.length) {
     const arquivo = new URL("../img/circuito.svg", document.currentScript.src).href;
     fetch(arquivo).then((r) => r.text()).then((texto) => {
@@ -269,7 +269,7 @@ if (!poucoMovimento) {
         svg.setAttribute("class", "circuito-vivo");
         svg.setAttribute("aria-hidden", "true");
         faixa.prepend(svg);
-        const quantos = window.innerWidth < 720 ? 6 : 12;
+        const quantos = faixa.matches(".instagram-perfil") ? 5 : window.innerWidth < 720 ? 6 : 12;
         const escolhidos = [...caminhos].sort(() => Math.random() - 0.5).slice(0, quantos);
         escolhidos.forEach((original) => {
           const linha = document.createElementNS("http://www.w3.org/2000/svg", "path");

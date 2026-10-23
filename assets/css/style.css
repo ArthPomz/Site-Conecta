@@ -167,7 +167,7 @@ img { max-width: 100%; display: block; }
 .prazos-bolinhas button[aria-current="true"]::before { opacity: 1; width: 20px; border-radius: 4px; background: var(--ciano); }
 
 /* Sinais de luz que correm pelas linhas do circuito (desenhados pelo main.js) */
-.hero, .topo { position: relative; isolation: isolate; overflow: hidden; }
+.hero, .topo, .instagram-perfil { position: relative; isolation: isolate; overflow: hidden; }
 .circuito-vivo { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 .circuito-vivo path { fill: none; stroke: #9BE3FF; stroke-width: 4; stroke-linecap: round; }
 
