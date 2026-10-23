@@ -1,3 +1,9 @@
+// Ao abrir uma página pelo menu, ela começa sempre do topo
+// (a não ser que o link leve a uma parte específica, como #perguntas)
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+if (!location.hash) window.scrollTo({ top: 0, behavior: "instant" });
+
+// Abre e fecha o menu no celular
 // Abre e fecha o menu no celular
 const botao = document.querySelector(".menu-botao");
 const menu = document.querySelector(".menu");
