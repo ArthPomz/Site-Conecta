@@ -35,7 +35,7 @@ Apresentar a Conecta, seus serviços contábeis e facilitar o contato de potenci
 - [x] Aviso de cookies: conteúdo de terceiros (mapa do Google) só carrega depois do aceite, e a escolha pode ser mudada em "Preferências de cookies".
 - [x] Aviso de privacidade no balão do WhatsApp.
 - [x] Razão social, CNPJ e registro no CRC-ES no rodapé, na Política e nos Termos.
-- [ ] Confirmar data de vigência, hospedagem e prazo de retenção (busque por `TODO(Arthur)` no código).
+- [ ] Confirmar data de vigência e hospedagem (busque por `TODO(Arthur)` no código).
 - [ ] Se for criado um formulário de contato, incluir aviso de privacidade com link para a política antes do botão de enviar.
 - [ ] Se for incluído Google Analytics, Pixel ou similar, carregar com `type="text/plain" data-consentimento="terceiros"` (ver `main.js`) e listar na tabela de cookies da política.
 
