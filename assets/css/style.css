@@ -31,6 +31,7 @@
   --texto: #14243A;
   --texto-suave: #4A5563;
   --link: #2F5A8C;
+  --foco: #1B3557;           /* contorno do foco do teclado: contraste de 3:1 ou mais com o fundo */
   --rodape: #1B3557;
 
   /* Tipografia: cinco tamanhos */
@@ -58,7 +59,19 @@ body {
 
 a { color: var(--link); }
 img { max-width: 100%; display: block; }
-:focus-visible { outline: 2px solid var(--ciano); outline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--foco); outline-offset: 3px; }
+/* Nas faixas coloridas o contorno troca de cor para continuar visível */
+.hero, .topo, .rodape .container, .whatsapp-balao-topo { --foco: var(--ciano); }
+.chamada { --foco: var(--noite); }
+main:focus { outline: none; }
+
+/* Atalho "Pular para o conteúdo": só aparece quando recebe o foco do teclado */
+.pular {
+  position: absolute; left: 16px; top: -100px; z-index: 30;
+  padding: 12px 20px; border-radius: 8px;
+  background: var(--fundo); color: var(--texto); font-weight: 600;
+}
+.pular:focus { top: 16px; }
 
 .container { max-width: var(--largura); margin: 0 auto; padding: 0 var(--margem); }
 
@@ -323,8 +336,8 @@ img { max-width: 100%; display: block; }
 .rodape-marca p { color: var(--texto-azul-suave); max-width: 280px; }
 .rodape h2 { font-family: var(--fonte-texto); font-size: var(--t-texto); font-weight: 600; color: #fff; margin-bottom: 16px; }
 .rodape ul { list-style: none; display: grid; gap: 10px; color: var(--texto-azul-suave); }
-.rodape a { color: var(--texto-azul-suave); text-decoration: none; transition: color 0.15s ease; }
-.rodape a:hover { color: #fff; }
+.rodape-grade a { color: var(--texto-azul-suave); text-decoration: none; transition: color 0.15s ease; }
+.rodape-grade a:hover { color: #fff; }
 .rodape-instagram { display: inline-flex; align-items: center; gap: 8px; }
 .rodape-instagram svg { width: 20px; height: 20px; flex: none; }
 .rodape-fim { margin-top: 80px; color: var(--texto-azul-suave); font-size: var(--t-pequeno); }
@@ -349,6 +362,7 @@ img { max-width: 100%; display: block; }
   --texto: #E8EEF5;
   --texto-suave: #A9B8CA;
   --link: #8BC4F2;
+  --foco: var(--ciano);
   --rodape: #08121F;
   color-scheme: dark;
 }
@@ -368,6 +382,7 @@ img { max-width: 100%; display: block; }
   }
   .menu.aberto { display: flex; }
   .menu a { display: block; padding: 14px var(--margem); }
+  .menu a:not(.botao):focus-visible { outline-offset: -3px; }
   .menu .botao { margin: 8px var(--margem) 0; width: auto; text-align: center; }
 }
 
@@ -483,7 +498,8 @@ body, .cabecalho, .rodape, .secao-alt, .faixa, .cartao, .faq details, .contato-i
 .whatsapp-balao-topo span { font-size: var(--t-pequeno); color: var(--texto-azul-suave); }
 .whatsapp-balao-fechar {
   margin-left: auto; background: none; border: 0; color: #fff;
-  font-size: 1.5rem; line-height: 1; cursor: pointer; padding: 4px;
+  font-size: 1.5rem; line-height: 1; cursor: pointer; padding: 0;
+  width: 40px; height: 40px; margin-right: -8px;
 }
 .whatsapp-balao form { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
 .whatsapp-balao-fala {
@@ -493,9 +509,9 @@ body, .cabecalho, .rodape, .secao-alt, .faixa, .cartao, .faq details, .contato-i
 .whatsapp-balao textarea {
   width: 100%; min-height: 84px; max-height: 200px; resize: none; overflow-y: auto; padding: 10px 12px;
   font: inherit; font-size: 1rem; color: var(--texto);
-  background: var(--fundo); border: 0; border-radius: 10px;
+  background: var(--fundo); border: 1px solid var(--texto-suave); border-radius: 10px;
 }
-.whatsapp-balao textarea:focus { outline: 2px solid var(--ciano); outline-offset: 1px; }
+.whatsapp-balao textarea:focus-visible { outline: 3px solid var(--foco); outline-offset: 1px; }
 .whatsapp-balao .botao { min-width: 0; width: 100%; padding: 12px 20px; }
 
 /* Quem pede menos movimento no sistema não vê animações */

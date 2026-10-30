@@ -12,17 +12,37 @@ irParaTopo();
 window.addEventListener("load", irParaTopo);
 window.addEventListener("pageshow", (e) => { if (e.persisted) irParaTopo(); });
 
-// Abre e fecha o menu no celular
-// Abre e fecha o menu no celular
+// Abre e fecha o menu no celular (o Esc também fecha e devolve o foco ao botão)
 const botao = document.querySelector(".menu-botao");
 const menu = document.querySelector(".menu");
 
 if (botao && menu) {
-  botao.addEventListener("click", () => {
-    const aberto = menu.classList.toggle("aberto");
+  const marcarMenu = (aberto) => {
+    menu.classList.toggle("aberto", aberto);
     botao.setAttribute("aria-expanded", aberto);
+    botao.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
+  };
+  botao.addEventListener("click", () => marcarMenu(!menu.classList.contains("aberto")));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menu.classList.contains("aberto")) {
+      marcarMenu(false);
+      botao.focus();
+    }
   });
 }
+
+// Links que abrem em outra aba avisam isso a quem usa leitor de tela
+document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+  const rotulo = link.getAttribute("aria-label");
+  if (rotulo) {
+    link.setAttribute("aria-label", `${rotulo} (abre em nova aba)`);
+  } else {
+    const aviso = document.createElement("span");
+    aviso.className = "sr-only";
+    aviso.textContent = " (abre em nova aba)";
+    link.append(aviso);
+  }
+});
 
 // Ano atual no rodapé
 const ano = document.querySelector("#ano");
@@ -127,7 +147,14 @@ if (whatsapp) {
       <textarea id="whatsapp-mensagem">Olá! Vim pelo site da Conecta e gostaria de falar com um contador.</textarea>
       <button class="botao botao-primario" type="submit">Enviar no WhatsApp</button>
     </form>`;
-  document.body.appendChild(balao);
+  balao.id = "whatsapp-balao";
+  whatsapp.after(balao);
+  // Com o JavaScript, o botão abre o balão em vez de ir direto para o WhatsApp
+  whatsapp.setAttribute("aria-label", "Conversar no WhatsApp");
+  whatsapp.setAttribute("aria-controls", balao.id);
+  whatsapp.setAttribute("aria-expanded", "false");
+  whatsapp.setAttribute("role", "button");
+  whatsapp.removeAttribute("target");
 
   // A caixa de texto cresce sozinha conforme a pessoa escreve
   const caixa = balao.querySelector("textarea");
@@ -137,21 +164,35 @@ if (whatsapp) {
   };
   caixa.addEventListener("input", ajustarAltura);
 
-  const abrir = () => {
+  // Quando a pessoa abre o balão, o foco vai para a mensagem; quando ele abre
+  // sozinho no fim da página, o foco fica onde estava
+  const abrir = (focar) => {
     balao.classList.add("aberto");
     whatsapp.setAttribute("aria-expanded", "true");
     ajustarAltura();
+    if (focar) caixa.focus();
   };
-  const fechar = () => { balao.classList.remove("aberto"); whatsapp.setAttribute("aria-expanded", "false"); };
+  const fechar = (devolverFoco) => {
+    balao.classList.remove("aberto");
+    whatsapp.setAttribute("aria-expanded", "false");
+    if (devolverFoco) whatsapp.focus();
+  };
   let fechadoPelaPessoa = false;
 
   whatsapp.addEventListener("click", (e) => {
     e.preventDefault();
-    balao.classList.contains("aberto") ? fechar() : abrir();
+    balao.classList.contains("aberto") ? fechar() : abrir(true);
+  });
+  // Com role="button", a barra de espaço também precisa abrir o balão
+  whatsapp.addEventListener("keydown", (e) => {
+    if (e.key === " ") { e.preventDefault(); whatsapp.click(); }
   });
   balao.querySelector(".whatsapp-balao-fechar").addEventListener("click", () => {
     fechadoPelaPessoa = true;
-    fechar();
+    fechar(true);
+  });
+  balao.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") { fechadoPelaPessoa = true; fechar(true); }
   });
   balao.querySelector("form").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -162,7 +203,7 @@ if (whatsapp) {
   // Abre uma vez ao chegar perto do fim da página (se a pessoa não tiver fechado)
   window.addEventListener("scroll", () => {
     const noFim = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40;
-    if (noFim && !fechadoPelaPessoa && !balao.classList.contains("aberto")) abrir();
+    if (noFim && !fechadoPelaPessoa && !balao.classList.contains("aberto")) abrir(false);
   }, { passive: true });
 }
 
@@ -228,7 +269,8 @@ if (vencimento) {
     const bolinha = document.createElement("button");
     bolinha.type = "button";
     bolinha.setAttribute("aria-label", `Ver ${tela.querySelector(".prazo-nome").textContent}`);
-    bolinha.addEventListener("click", () => mostrar(i));
+    // Escolher um prazo pelas bolinhas para a troca automática de vez
+    bolinha.addEventListener("click", () => { automatico = false; mostrar(i); });
     bolinhas.append(bolinha);
   });
   vencimento.append(bolinhas);
@@ -244,10 +286,13 @@ if (vencimento) {
   };
   mostrar(0);
   let parado = false;
+  let automatico = true;
   vencimento.addEventListener("mouseenter", () => { parado = true; });
   vencimento.addEventListener("mouseleave", () => { parado = false; });
+  vencimento.addEventListener("focusin", () => { parado = true; });
+  vencimento.addEventListener("focusout", () => { parado = false; });
   if (!poucoMovimento) {
-    setInterval(() => { if (!parado && !document.hidden) mostrar((atual + 1) % telas.length); }, 4000);
+    setInterval(() => { if (automatico && !parado && !document.hidden) mostrar((atual + 1) % telas.length); }, 4000);
   }
 }
 
