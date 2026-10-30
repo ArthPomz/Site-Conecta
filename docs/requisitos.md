@@ -43,4 +43,3 @@ Apresentar a Conecta, seus serviços contábeis e facilitar o contato de potenci
 - Logo em vetor (SVG, AI ou PDF), se existir. O logo em imagem e as cores já foram recebidos.
 - Fotos do escritório ou da equipe.
 - Domínio (o e-mail sugere `conectagcont.com.br`).
-- Razão social, CNPJ, número do CRC-ES. A Conecta é agente de tratamento de pequeno porte (sem encarregado obrigatório; atende pelo canal de privacidade).
