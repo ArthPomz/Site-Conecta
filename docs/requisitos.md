@@ -34,7 +34,7 @@ Apresentar a Conecta, seus serviços contábeis e facilitar o contato de potenci
 - [x] Política de Privacidade e Termos de Uso, com link no rodapé de todas as páginas.
 - [x] Aviso de cookies: conteúdo de terceiros (mapa do Google) só carrega depois do aceite, e a escolha pode ser mudada em "Preferências de cookies".
 - [x] Aviso de privacidade no balão do WhatsApp.
-- [ ] Preencher razão social, CNPJ, registro no CRC-ES e encarregado (busque por `TODO(Arthur)` no código).
+- [ ] Preencher razão social, CNPJ, e registro no CRC-ES (busque por `TODO(Arthur)` no código).
 - [ ] Se for criado um formulário de contato, incluir aviso de privacidade com link para a política antes do botão de enviar.
 - [ ] Se for incluído Google Analytics, Pixel ou similar, carregar com `type="text/plain" data-consentimento="terceiros"` (ver `main.js`) e listar na tabela de cookies da política.
 
@@ -43,4 +43,4 @@ Apresentar a Conecta, seus serviços contábeis e facilitar o contato de potenci
 - Logo em vetor (SVG, AI ou PDF), se existir. O logo em imagem e as cores já foram recebidos.
 - Fotos do escritório ou da equipe.
 - Domínio (o e-mail sugere `conectagcont.com.br`).
-- Razão social, CNPJ, número do CRC-ES e nome do encarregado de dados (LGPD).
+- Razão social, CNPJ, número do CRC-ES. A Conecta é agente de tratamento de pequeno porte (sem encarregado obrigatório; atende pelo canal de privacidade).
