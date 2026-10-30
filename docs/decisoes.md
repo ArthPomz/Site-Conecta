@@ -9,7 +9,7 @@ Cada decisão importante do projeto fica registrada aqui, com a data e o motivo.
 
 ## 2026-10-20: Hospedagem
 
-**Decisão:** GitHub Pages, a confirmar.
+**Decisão:** o site não vai ficar no GitHub Pages; a hospedagem definitiva ainda será escolhida (atualizado em 2026-10-30).
 **Motivo:** gratuito e integrado ao repositório. Dá para usar o domínio próprio do cliente.
 
 ## 2026-10-20: Cores e logo
