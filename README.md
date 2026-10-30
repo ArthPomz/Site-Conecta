@@ -29,7 +29,9 @@ Site-Conecta/
 ├── pages/
 │   ├── servicos.html     # lista completa de serviços
 │   ├── sobre.html        # página "O que é a Conecta"
-│   └── contato.html      # telefone, e-mail, endereço e mapa
+│   ├── contato.html      # telefone, e-mail, endereço e mapa
+│   ├── privacidade.html  # Política de Privacidade (LGPD)
+│   └── termos.html       # Termos de Uso
 ├── assets/
 │   ├── css/style.css     # estilos do site
 │   ├── js/main.js        # menu mobile e pequenos scripts
