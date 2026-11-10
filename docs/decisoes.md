@@ -9,7 +9,7 @@ Cada decisão importante do projeto fica registrada aqui, com a data e o motivo.
 
 ## 2026-10-20: Hospedagem
 
-**Decisão:** GitHub Pages, a confirmar.
+**Decisão:** o site não vai ficar no GitHub Pages; a hospedagem definitiva ainda será escolhida (atualizado em 2026-10-30).
 **Motivo:** gratuito e integrado ao repositório. Dá para usar o domínio próprio do cliente.
 
 ## 2026-10-20: Cores e logo
@@ -21,6 +21,11 @@ Cada decisão importante do projeto fica registrada aqui, com a data e o motivo.
 
 **Decisão:** seguir a linha visual de sites de contabilidade digital, como a Contabilizei, com cabeçalho branco, títulos grandes, botões em pílula, cartões arredondados e perguntas frequentes.
 **Motivo:** pedido do cliente. Só o estilo foi usado como referência: textos, telas e informações são da Conecta. Detalhes em [identidade-visual.md](identidade-visual.md).
+
+## 2026-10-30: Adequação à LGPD
+
+**Decisão:** criar Política de Privacidade e Termos de Uso, um aviso de cookies que bloqueia o mapa do Google até o aceite, e identificar a empresa (razão social, CNPJ e CRC-ES) no rodapé.
+**Motivo:** a LGPD exige transparência sobre o tratamento de dados e consentimento para cookies de terceiros que não são necessários. O site não tem formulário nem ferramenta de análise, então o único conteúdo bloqueado hoje é o mapa. A escolha de tema e a resposta ao aviso ficam no armazenamento local do navegador e são consideradas necessárias.
 
 ## Em aberto
 

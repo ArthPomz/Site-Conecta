@@ -74,7 +74,7 @@ img { max-width: 100%; display: block; }
 .botao {
   display: inline-flex; align-items: center; justify-content: center;
   min-width: 220px; padding: 15px 32px; border-radius: 999px;
-  font-weight: 600; font-size: var(--t-texto); line-height: 1.2; text-decoration: none;
+  font-family: inherit; font-weight: 600; font-size: var(--t-texto); line-height: 1.2; text-decoration: none;
   border: 2px solid transparent;
   transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
 }
@@ -301,7 +301,36 @@ img { max-width: 100%; display: block; }
 .contato-item a { font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
 .contato-item a:hover { text-decoration: underline; }
 .contato-item p + a { display: inline-block; margin-top: 8px; font-size: var(--t-texto); }
-.mapa { width: 100%; height: 100%; min-height: 480px; border: 0; background: var(--superficie); }
+.mapa { width: 100%; height: 100%; min-height: 480px; background: var(--superficie); display: flex; }
+.mapa iframe { width: 100%; min-height: 480px; border: 0; display: block; }
+/* Enquanto a pessoa não aceita os cookies, o mapa do Google dá lugar a este aviso */
+.mapa-aviso {
+  margin: auto; max-width: 380px; padding: 32px 24px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 16px; color: var(--texto-suave);
+}
+.mapa-aviso a { font-size: 1rem; }
+
+/* Política de Privacidade e Termos de Uso: texto corrido, fácil de ler */
+.legal > * { max-width: 72ch; }
+.legal > .tabela-rolagem { max-width: 960px; }
+.legal p + p { margin-top: 16px; }
+.legal h2 {
+  font-family: var(--fonte-titulo); font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  letter-spacing: -0.02em; line-height: 1.1; margin: 48px 0 16px; scroll-margin-top: 96px;
+}
+.legal h3 { font-size: var(--t-texto); margin: 24px 0 8px; }
+.legal ul { margin: 12px 0 16px; padding-left: 24px; display: grid; gap: 8px; }
+.legal code { font-size: 0.9em; }
+.tabela-rolagem { overflow-x: auto; margin: 16px 0; }
+.tabela-legal { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 1rem; }
+.tabela-legal th, .tabela-legal td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--superficie-forte); }
+.tabela-legal th { background: var(--superficie); }
+/* Dados que ainda faltam preencher (ver os comentários TODO no HTML) */
+.pendente { background: #FFE58A; color: #3A2E00; padding: 0 4px; }
+.link-botao {
+  background: none; border: 0; padding: 0; font: inherit; color: var(--link);
+  text-decoration: underline; cursor: pointer;
+}
 
 /* Faixas: serviços e "O que é a Conecta", um assunto por faixa */
 .faixa { padding: 64px 0; scroll-margin-top: 76px; }
@@ -327,7 +356,25 @@ img { max-width: 100%; display: block; }
 .rodape a:hover { color: #fff; }
 .rodape-instagram { display: inline-flex; align-items: center; gap: 8px; }
 .rodape-instagram svg { width: 20px; height: 20px; flex: none; }
-.rodape-fim { margin-top: 80px; color: var(--texto-azul-suave); font-size: var(--t-pequeno); }
+.rodape-fim { margin-top: 80px; color: var(--texto-azul-suave); font-size: var(--t-pequeno); display: grid; gap: 12px; }
+.rodape .rodape-legal { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.rodape .link-botao { color: var(--texto-azul-suave); text-decoration: none; }
+.rodape .link-botao:hover { color: #fff; }
+
+/* Aviso de cookies: fica por cima da página até a pessoa responder */
+.cookies {
+  position: fixed; left: 20px; bottom: 20px; z-index: 30;
+  width: min(440px, calc(100vw - 40px)); padding: 20px 24px;
+  background: var(--superficie); color: var(--texto); font-size: 1rem;
+  box-shadow: 0 18px 48px rgba(10, 25, 45, 0.35); /* taste-skill-ignore: aviso por cima da página */
+  display: none;
+}
+.cookies.aberto { display: block; }
+.cookies-botoes { display: flex; gap: 12px; margin-top: 16px; }
+.cookies .botao { min-width: 0; flex: 1; padding: 11px 20px; font-size: 1rem; }
+@media (max-width: 720px) {
+  .cookies { left: 0; right: 0; bottom: 0; width: 100%; padding: 16px var(--margem) 20px; }
+}
 
 /* Botão flutuante de WhatsApp (fica por cima da página, por isso tem sombra) */
 .whatsapp {
@@ -497,6 +544,7 @@ body, .cabecalho, .rodape, .secao-alt, .faixa, .cartao, .faq details, .contato-i
 }
 .whatsapp-balao textarea:focus { outline: 2px solid var(--ciano); outline-offset: 1px; }
 .whatsapp-balao .botao { min-width: 0; width: 100%; padding: 12px 20px; }
+.whatsapp-balao-aviso { font-size: 0.8125rem; line-height: 1.4; color: var(--texto-suave); }
 
 /* Quem pede menos movimento no sistema não vê animações */
 @media (prefers-reduced-motion: reduce) {

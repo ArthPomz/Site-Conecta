@@ -105,6 +105,76 @@ if (cabecalho) {
   marcarRolagem();
 }
 
+// Aviso de cookies (LGPD): conteúdo de terceiros, como o mapa do Google, só
+// carrega depois que a pessoa aceita. A resposta fica salva no navegador e pode
+// ser mudada em "Preferências de cookies", no rodapé.
+// Para bloquear um novo conteúdo de terceiros até o aceite:
+// - mapa ou vídeo: <div data-consentimento="terceiros" data-src="..." data-titulo="...">aviso</div>
+// - script (ex.: Google Analytics): <script type="text/plain" data-consentimento="terceiros" src="..."></script>
+const consentimento = (() => {
+  const chave = "consentimento-cookies";
+  const politica = new URL("../../pages/privacidade.html", document.currentScript.src).href;
+  const ler = () => { try { return localStorage.getItem(chave); } catch (e) { return null; } };
+
+  const blocos = [...document.querySelectorAll("div[data-consentimento]")];
+  blocos.forEach((bloco) => { bloco._aviso = [...bloco.childNodes]; });
+
+  const liberar = () => {
+    blocos.forEach((bloco) => {
+      if (bloco.querySelector("iframe")) return;
+      const quadro = document.createElement("iframe");
+      quadro.src = bloco.dataset.src;
+      quadro.title = bloco.dataset.titulo || "";
+      quadro.loading = "lazy";
+      quadro.referrerPolicy = "no-referrer-when-downgrade";
+      bloco.replaceChildren(quadro);
+    });
+    document.querySelectorAll('script[type="text/plain"][data-consentimento]').forEach((original) => {
+      const script = document.createElement("script");
+      [...original.attributes].forEach((a) => { if (a.name !== "type") script.setAttribute(a.name, a.value); });
+      script.text = original.text;
+      original.replaceWith(script);
+    });
+  };
+  // Ao recusar depois de ter aceitado, o mapa sai da página e o aviso volta
+  const bloquear = () => {
+    blocos.forEach((bloco) => { if (bloco.querySelector("iframe")) bloco.replaceChildren(...bloco._aviso); });
+  };
+
+  const aviso = document.createElement("div");
+  aviso.className = "cookies";
+  aviso.setAttribute("role", "region");
+  aviso.setAttribute("aria-label", "Aviso de cookies");
+  aviso.innerHTML = `
+    <p>Usamos só o necessário para o site funcionar. Conteúdos de terceiros, como o mapa do Google, podem usar cookies e só são carregados se você permitir. Saiba mais na <a href="${politica}#cookies">Política de Privacidade</a>.</p>
+    <div class="cookies-botoes">
+      <button class="botao botao-contorno" type="button" data-recusar-cookies>Recusar</button>
+      <button class="botao botao-primario" type="button" data-aceitar-cookies>Aceitar</button>
+    </div>`;
+  document.body.appendChild(aviso);
+
+  const mostrarAviso = () => aviso.classList.add("aberto");
+  const responder = (resposta) => {
+    try { localStorage.setItem(chave, resposta); } catch (e) {}
+    aviso.classList.remove("aberto");
+    resposta === "aceito" ? liberar() : bloquear();
+  };
+
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-aceitar-cookies]")) responder("aceito");
+    else if (e.target.closest("[data-recusar-cookies]")) responder("recusado");
+    else if (e.target.closest("[data-preferencias-cookies]")) {
+      mostrarAviso();
+      aviso.querySelector("button").focus();
+    }
+  });
+
+  const resposta = ler();
+  if (resposta === "aceito") liberar();
+  else if (resposta !== "recusado") mostrarAviso();
+  return { aberto: () => aviso.classList.contains("aberto") };
+})();
+
 // Balão do WhatsApp: abre sozinho quando a pessoa chega ao fim da página,
 // com uma mensagem pronta que ela pode editar antes de enviar
 const whatsapp = document.querySelector(".whatsapp");
@@ -126,6 +196,7 @@ if (whatsapp) {
       <label class="sr-only" for="whatsapp-mensagem">Sua mensagem</label>
       <textarea id="whatsapp-mensagem">Olá! Vim pelo site da Conecta e gostaria de falar com um contador.</textarea>
       <button class="botao botao-primario" type="submit">Enviar no WhatsApp</button>
+      <p class="whatsapp-balao-aviso">A conversa segue no WhatsApp. Usamos os dados que você enviar só para responder ao seu contato, como explica a <a href="${new URL("../../pages/privacidade.html", document.currentScript.src).href}">Política de Privacidade</a>.</p>
     </form>`;
   document.body.appendChild(balao);
 
@@ -162,7 +233,7 @@ if (whatsapp) {
   // Abre uma vez ao chegar perto do fim da página (se a pessoa não tiver fechado)
   window.addEventListener("scroll", () => {
     const noFim = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40;
-    if (noFim && !fechadoPelaPessoa && !balao.classList.contains("aberto")) abrir();
+    if (noFim && !fechadoPelaPessoa && !consentimento.aberto() && !balao.classList.contains("aberto")) abrir();
   }, { passive: true });
 }
 
